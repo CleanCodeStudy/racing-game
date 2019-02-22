@@ -1,19 +1,12 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
     private List<Car> cars;
     private int times;
 
-    public RacingGame(){
-        this.cars = new ArrayList<>();
-    }
-
-    public void init(int numCar, int tryCount){
+    public void init(List<Car> cars, int tryCount){
         this.times = tryCount;
-        for(int i=0; i<numCar; i++){
-            cars.add(new Car());
-        }
+        this.cars = cars;
     }
 
     public void start(){
@@ -26,10 +19,6 @@ public class RacingGame {
         for(Car car: cars){
             System.out.println(car.drawRacingRoad());
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
 

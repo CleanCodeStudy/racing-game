@@ -8,7 +8,7 @@ public class Car {
 
     public void repeatUpTo(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
-            int randomNum = generateRandomInt();
+            int randomNum = RandomMaker.generateRandomInt();
             updateLocationAccordingTo(randomNum);
         }
     }
@@ -17,10 +17,6 @@ public class Car {
         if (randomNum >= CONDITION_NUMBER) {
             location++;
         }
-    }
-
-    private int generateRandomInt(){
-        return (int) (Math.random() * 10);
     }
 
     public String drawRacingRoad() {
