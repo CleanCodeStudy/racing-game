@@ -19,6 +19,6 @@ public class RacingGameTest {
     public void testGame() {
 //        racingGame.init(4, 10);
         racingGame.start();
-        racingGame.print();
+//        racingGame.print();
     }
 }

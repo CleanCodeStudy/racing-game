@@ -12,6 +12,10 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() { //test를 위해서 getName을추가했는데 별로인듯ㅠㅠ
+        return name;
+    }
+
     public void repeatUpTo(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             int randomNum = RandomMaker.generateRandomInt();
