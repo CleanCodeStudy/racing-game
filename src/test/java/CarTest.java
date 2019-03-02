@@ -34,8 +34,12 @@ public class CarTest {
 
         method.setAccessible(true);
         field.setAccessible(true);
-        method.invoke(car, 6);
 
-        assertThat(field.get(car), is(1));
+        int tryTimes = 3;
+        for(int i=0; i<3 ; i++){
+            method.invoke(car, 6);
+        }
+
+        assertThat(field.get(car), is(3));
     }
 }
