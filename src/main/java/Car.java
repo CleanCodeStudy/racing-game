@@ -1,9 +1,15 @@
 public class Car {
     private int location;
+    private String name;
     private final static int CONDITION_NUMBER = 4;
 
     public Car() {
         location = 0;
+    }
+
+    public Car(String name){ //like domain + service
+        super(); // 써도 되나..?
+        this.name = name;
     }
 
     public void repeatUpTo(int tryCount) {
