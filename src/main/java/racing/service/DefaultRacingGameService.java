@@ -13,12 +13,12 @@ public class DefaultRacingGameService implements RacingGameService {
     private final RacingGameInfo racingGameInfo;
     private final RacingCars racingCars;
 
-    public DefaultRacingGameService(RacingGameInfo racingGameInfo) {
+    public DefaultRacingGameService(final RacingGameInfo racingGameInfo) {
         this.racingGameInfo = racingGameInfo;
         this.racingCars = createRacingCar(racingGameInfo.getNumberOfCar());
     }
 
-    private RacingCars createRacingCar(int numberOfCar) {
+    private RacingCars createRacingCar(final int numberOfCar) {
         List<Car> cars = new ArrayList<>(numberOfCar);
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
