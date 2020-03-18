@@ -5,7 +5,7 @@ import racing.view.InputView;
 
 public class RacingGameServiceGenerator {
 
-    public static DefaultRacingGameService generate() {
+    public static RacingGameService generate() {
         try {
             int numberOfCar = Integer.parseInt(InputView.askNumberOfCar());
             int countOfMovement = Integer.parseInt(InputView.askCountOfMovement());
