@@ -10,7 +10,7 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public void runUpto(final int numberOfMovement) {
+    public void runUpTo(final int numberOfMovement) {
         for (Car car : racingCars) {
             car.runUpto(numberOfMovement);
         }

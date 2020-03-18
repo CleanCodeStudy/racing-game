@@ -8,7 +8,7 @@ import racing.util.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultRacingGameService {
+public class DefaultRacingGameService implements RacingGameService {
 
     private final RacingGameInfo racingGameInfo;
     private final RacingCars racingCars;
@@ -28,11 +28,11 @@ public class DefaultRacingGameService {
 
     public void race() {
         for (int i = 0; i < RacingGameInfo.getGameCount(); i++) {
-            racingCars.runUpto(racingGameInfo.getCountOfMovement());
+            racingCars.runUpTo(racingGameInfo.getCountOfMovement());
         }
     }
 
-    public void announdResult() {
+    public void announceResult() {
         OutputView.printResult(racingCars.createTrack());
     }
 
