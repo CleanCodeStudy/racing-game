@@ -1,4 +1,4 @@
-package racing.util;
+package racing.view;
 
 public class OutputView {
 

@@ -1,33 +1,23 @@
 package racing.service;
 
-import racing.domain.Car;
 import racing.domain.RacingCars;
 import racing.dto.RacingGameInfo;
-import racing.util.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
+import racing.view.OutputView;
 
 public class DefaultRacingGameService implements RacingGameService {
+
+    private static final int GAME_COUNT = 5;
 
     private final RacingGameInfo racingGameInfo;
     private final RacingCars racingCars;
 
     public DefaultRacingGameService(final RacingGameInfo racingGameInfo) {
         this.racingGameInfo = racingGameInfo;
-        this.racingCars = createRacingCar(racingGameInfo.getNumberOfCar());
-    }
-
-    private RacingCars createRacingCar(final int numberOfCar) {
-        List<Car> cars = new ArrayList<>(numberOfCar);
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
-        return new RacingCars(cars);
+        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
     }
 
     public void race() {
-        for (int i = 0; i < RacingGameInfo.getGameCount(); i++) {
+        for (int i = 0; i < GAME_COUNT; i++) {
             racingCars.runUpTo(racingGameInfo.getCountOfMovement());
         }
     }

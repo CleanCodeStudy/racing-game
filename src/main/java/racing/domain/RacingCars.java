@@ -1,18 +1,23 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
 
     private final List<Car> racingCars;
 
-    public RacingCars(List<Car> racingCars) {
-        this.racingCars = racingCars;
+    public RacingCars(final int numberOfCar) {
+        List<Car> cars = new ArrayList<>(numberOfCar);
+        for (int i = 0; i < numberOfCar; i++) {
+            cars.add(new Car());
+        }
+        this.racingCars = cars;
     }
 
     public void runUpTo(final int numberOfMovement) {
         for (Car car : racingCars) {
-            car.runUpto(numberOfMovement);
+            car.runUpTo(numberOfMovement);
         }
     }
 
