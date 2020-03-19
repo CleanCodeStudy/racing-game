@@ -9,7 +9,7 @@ public class Car {
 
     private int location;
 
-    public int runUpto(int countOfMovement) {
+    public int runUpTo(final int countOfMovement) {
         for (int i = 0; i < countOfMovement; i++) {
             move();
         }

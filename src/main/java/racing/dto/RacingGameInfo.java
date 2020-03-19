@@ -2,7 +2,6 @@ package racing.dto;
 
 public class RacingGameInfo {
 
-    private static final int GAME_COUNT = 5;
     private final int numberOfCar;
     private final int countOfMovement;
 
@@ -19,9 +18,6 @@ public class RacingGameInfo {
         }
     }
 
-    public static int getGameCount() {
-        return GAME_COUNT;
-    }
 
     public int getNumberOfCar() {
         return numberOfCar;
