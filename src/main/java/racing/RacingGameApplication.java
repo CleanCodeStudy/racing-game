@@ -8,6 +8,6 @@ public class RacingGameApplication {
 
         int carNumbers = inputHelper.getCarNumbers();
         int totalGameTurns = inputHelper.getTotalGameTurns();
-        
+
     }
 }
