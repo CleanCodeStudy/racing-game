@@ -1,4 +1,4 @@
-package racing.view;
+package racing.domain;
 
 import java.util.List;
 

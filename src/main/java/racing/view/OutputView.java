@@ -1,5 +1,7 @@
 package racing.view;
 
+import racing.domain.RacingResult;
+
 import java.util.List;
 
 public class OutputView {

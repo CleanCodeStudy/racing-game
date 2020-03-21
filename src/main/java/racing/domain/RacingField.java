@@ -1,6 +1,4 @@
-package racing;
-
-import racing.view.RacingResult;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;

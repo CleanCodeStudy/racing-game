@@ -1,6 +1,7 @@
 package racing;
 
-import racing.util.InputHelper;
+import racing.domain.RacingField;
+import racing.view.InputHelper;
 import racing.view.OutputView;
 
 public class RacingGameApplication {
