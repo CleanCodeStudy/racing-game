@@ -33,7 +33,7 @@ class RacingGameServiceTest {
     void canMove(int condition) {
         RacingGameService racingGameService = new RacingGameService(3);
 
-        racingGameService.race(() -> condition);
+        racingGameService.raceWith(() -> condition);
 
 
         // 이 더러운 단언문은 어쩌면 좋죠
@@ -51,7 +51,7 @@ class RacingGameServiceTest {
     void cannotMove(int condition) {
         RacingGameService racingGameService = new RacingGameService(3);
 
-        racingGameService.race(() -> condition);
+        racingGameService.raceWith(() -> condition);
 
 
         // 이 더러운 단언문은 어쩌면 좋죠

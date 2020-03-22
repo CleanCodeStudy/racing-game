@@ -1,5 +1,5 @@
 package racing.domain;
 
 public interface Engine {
-    int tryMove();
+    int getPower();
 }

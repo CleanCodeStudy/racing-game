@@ -24,7 +24,7 @@ class RacingCarsTest {
     void racingcarsMoveTest(int condition) {
         RacingCars racingCars = new RacingCars(3);
 
-        racingCars.run(() -> condition);
+        racingCars.runWith(() -> condition);
 
         assertAll(
                 () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(1),
@@ -39,7 +39,7 @@ class RacingCarsTest {
     void racingcarsCannotMoveTest(int condition) {
         RacingCars racingCars = new RacingCars(3);
 
-        racingCars.run(() -> condition);
+        racingCars.runWith(() -> condition);
 
         assertAll(
                 () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(0),

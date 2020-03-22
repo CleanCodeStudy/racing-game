@@ -11,7 +11,7 @@ class DefaultEngineTest {
     @Test
     void engin() {
         DefaultEngine defaultEngine = new DefaultEngine();
-        assertThat(defaultEngine.tryMove()).isBetween(0, 10);
+        assertThat(defaultEngine.getPower()).isBetween(0, 10);
     }
 
 }

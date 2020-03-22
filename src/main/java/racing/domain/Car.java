@@ -7,14 +7,14 @@ public class Car {
     private int location;
 
 
-    public void move(final int condition) {
-        if (isMovable(condition)) {
+    public void moveWith(final int power) {
+        if (isMovable(power)) {
             location++;
         }
     }
 
-    private boolean isMovable(final int condition) {
-        return condition >= MOVE_CONDITION;
+    private boolean isMovable(final int power) {
+        return power >= MOVE_CONDITION;
     }
 
     public int getLocation() {

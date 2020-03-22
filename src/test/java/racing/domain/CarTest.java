@@ -13,7 +13,7 @@ class CarTest {
     @ParameterizedTest
     void moveCar(int input) {
         Car car = new Car();
-        car.move(input);
+        car.moveWith(input);
 
         assertThat(car.getLocation()).isEqualTo(1);
     }
@@ -23,7 +23,7 @@ class CarTest {
     @ParameterizedTest
     void cannotMoveCar(int input) {
         Car car = new Car();
-        car.move(input);
+        car.moveWith(input);
 
         assertThat(car.getLocation()).isEqualTo(0);
     }

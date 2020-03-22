@@ -19,9 +19,9 @@ public class RacingCars {
         return cars;
     }
 
-    public RacingCars run(Engine engine) {
+    public RacingCars runWith(Engine engine) {
         for (Car car : cars) {
-            car.move(engine.tryMove());
+            car.moveWith(engine.getPower());
         }
         return this;
     }

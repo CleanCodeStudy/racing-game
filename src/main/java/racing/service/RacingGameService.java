@@ -14,8 +14,8 @@ public class RacingGameService {
         this.racingCars = new RacingCars(numberOfCar);
     }
 
-    public RacingCars race(Engine engine) {
-        return racingCars.run(engine);
+    public RacingCars raceWith(Engine engine) {
+        return racingCars.runWith(engine);
     }
 
     public RacingCars getRacingCars() {

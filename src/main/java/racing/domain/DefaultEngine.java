@@ -4,7 +4,7 @@ import racing.util.RandomGenerator;
 
 public class DefaultEngine implements Engine {
     @Override
-    public int tryMove() {
+    public int getPower() {
         return RandomGenerator.pickRandomNumber();
     }
 }

@@ -14,7 +14,7 @@ public class RacingController {
         RacingGameService racingGameService = new RacingGameService(numberOfCar);
 
         for (int i = 0; i < countOfMovement; i++) {
-            OutputView.printResult(racingGameService.race(new DefaultEngine()));
+            OutputView.printResult(racingGameService.raceWith(new DefaultEngine()));
         }
     }
 }
