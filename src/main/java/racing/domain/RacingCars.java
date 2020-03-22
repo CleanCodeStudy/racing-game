@@ -5,33 +5,30 @@ import java.util.List;
 
 public class RacingCars {
 
-    private final List<Car> racingCars;
+    private final List<Car> cars;
 
     public RacingCars(final int numberOfCar) {
+        this.cars = createCar(numberOfCar);
+    }
+
+    private List<Car> createCar(int numberOfCar) {
         List<Car> cars = new ArrayList<>(numberOfCar);
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
-        this.racingCars = cars;
+        return cars;
     }
 
-    public void runUpTo(final int numberOfMovement) {
-        for (Car car : racingCars) {
-            car.runUpTo(numberOfMovement);
+    public RacingCars run(Engine engine) {
+        for (Car car : cars) {
+            car.move(engine.tryMove());
         }
+        return this;
     }
 
-    public String createTrack() {
-        StringBuilder tracks = new StringBuilder();
-        for (Car car : racingCars) {
-            tracks.append(car.createTrack());
-            tracks.append("\n");
-        }
-        return tracks.toString();
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public int size() {
-        return racingCars.size();
-    }
 
 }

@@ -1,27 +1,32 @@
 package racing.view;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class InputViewTest {
 
-    @DisplayName("자동차 대수를 입력받은 대로 리턴한다")
-    @Test
-    void askNumberOfCar() {
-        System.setIn(new ByteArrayInputStream("5".getBytes()));
+    @DisplayName("자동차 대수에 숫자가 들어오지 않으면 Exception")
+    @CsvSource({"abc", "가나다", "1기"})
+    @ParameterizedTest
+    void askNumberOfCar(String condition) {
+        System.setIn(new ByteArrayInputStream(condition.getBytes()));
 
-        assertThat(InputView.askNumberOfCar()).isEqualTo("5");
+        assertThatThrownBy(InputView::askNumberOfCar)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("이동횟수를 입력받은 대로 리턴한다")
-    @Test
-    void askNumberOfMovement() {
-        System.setIn(new ByteArrayInputStream("5".getBytes()));
+    @DisplayName("이동횟수에 숫자가 들어오지 않으면 Exception")
+    @CsvSource({"abc", "가나다", "1기"})
+    @ParameterizedTest
+    void askNumberOfMovement(String condition) {
+        System.setIn(new ByteArrayInputStream("한글".getBytes()));
 
-        assertThat(InputView.askCountOfMovement()).isEqualTo("5");
+        assertThatThrownBy(InputView::askCountOfMovement)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

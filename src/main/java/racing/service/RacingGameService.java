@@ -1,6 +1,24 @@
 package racing.service;
 
-public interface RacingGameService {
-    void race();
-    void announceResult();
+import racing.domain.Engine;
+import racing.domain.RacingCars;
+
+public class RacingGameService {
+
+    private final RacingCars racingCars;
+
+    public RacingGameService(final int numberOfCar) {
+        if (numberOfCar <= 0) {
+            throw new IllegalArgumentException("0대 이하의 차는 경기할 수 없습니다");
+        }
+        this.racingCars = new RacingCars(numberOfCar);
+    }
+
+    public RacingCars race(Engine engine) {
+        return racingCars.run(engine);
+    }
+
+    public RacingCars getRacingCars() {
+        return racingCars;
+    }
 }
