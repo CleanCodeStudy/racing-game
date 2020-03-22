@@ -24,7 +24,7 @@ class InputViewTest {
     @CsvSource({"abc", "가나다", "1기"})
     @ParameterizedTest
     void askNumberOfMovement(String condition) {
-        System.setIn(new ByteArrayInputStream("한글".getBytes()));
+        System.setIn(new ByteArrayInputStream(condition.getBytes()));
 
         assertThatThrownBy(InputView::askCountOfMovement)
                 .isInstanceOf(IllegalArgumentException.class);
