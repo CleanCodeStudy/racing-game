@@ -28,8 +28,8 @@ class RacingCarsTest {
 
         assertAll(
                 () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(1),
-                () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(1),
-                () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(1)
+                () -> assertThat(racingCars.getCars().get(1).getLocation()).isEqualTo(1),
+                () -> assertThat(racingCars.getCars().get(2).getLocation()).isEqualTo(1)
         );
     }
 
@@ -43,8 +43,8 @@ class RacingCarsTest {
 
         assertAll(
                 () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(0),
-                () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(0),
-                () -> assertThat(racingCars.getCars().get(0).getLocation()).isEqualTo(0)
+                () -> assertThat(racingCars.getCars().get(1).getLocation()).isEqualTo(0),
+                () -> assertThat(racingCars.getCars().get(2).getLocation()).isEqualTo(0)
         );
     }
 
