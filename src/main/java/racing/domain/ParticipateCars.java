@@ -1,7 +1,6 @@
 package racing.domain;
 
-import racing.NumberGenerator;
-import racing.RandomNumberGenerator;
+import racing.domain.common.NumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;

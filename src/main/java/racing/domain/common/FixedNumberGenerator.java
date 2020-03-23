@@ -1,6 +1,4 @@
-package racing;
-
-import java.util.List;
+package racing.domain.common;
 
 public class FixedNumberGenerator implements NumberGenerator {
     private static final int MOVE_CONDITION_NUMBER = 4;
@@ -9,11 +7,6 @@ public class FixedNumberGenerator implements NumberGenerator {
 
     public FixedNumberGenerator() {
         this.condition = true;
-    }
-
-    @Override
-    public List<Integer> generateNumber(int numberOfAttempts) {
-        return null;
     }
 
     @Override

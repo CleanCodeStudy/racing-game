@@ -13,7 +13,7 @@ class CarTest {
     @CsvSource({
             "4, 1", "3, 0"
     })
-    void name(int randomNumber, boolean expectedResult) {
+    void name(int randomNumber, int expectedResult) {
         Car car = new Car();
 
         int actualResult = car.attemptToMove(randomNumber);
