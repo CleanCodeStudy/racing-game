@@ -2,19 +2,17 @@ package racing.domain;
 
 public class Car {
 
-    private static final int MOVE_CONDITION = 4;
-
     private int location;
 
-
-    public void moveWith(final int power) {
-        if (isMovable(power)) {
-            location++;
-        }
+    public Car() {
     }
 
-    private boolean isMovable(final int power) {
-        return power >= MOVE_CONDITION;
+    public Car(Car car) {
+        this.location = car.getLocation();
+    }
+
+    public void tryMoveWith(Engine engine) {
+        location += engine.getPower();
     }
 
     public int getLocation() {

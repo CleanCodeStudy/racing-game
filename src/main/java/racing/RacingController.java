@@ -1,6 +1,7 @@
 package racing;
 
 import racing.domain.DefaultEngine;
+import racing.dto.RacingGameInfo;
 import racing.service.RacingGameService;
 import racing.view.InputView;
 import racing.view.OutputView;
@@ -8,13 +9,11 @@ import racing.view.OutputView;
 public class RacingController {
 
     public static void main(String[] args) {
-        int numberOfCar = InputView.askNumberOfCar();
-        int countOfMovement = InputView.askCountOfMovement();
+        RacingGameInfo racingGameInfo = new RacingGameInfo(InputView.askNumberOfCar(), InputView.askCountOfMovement());
+        RacingGameService racingGameService = new RacingGameService(racingGameInfo);
 
-        RacingGameService racingGameService = new RacingGameService(numberOfCar);
+        racingGameService.raceWith(new DefaultEngine());
 
-        for (int i = 0; i < countOfMovement; i++) {
-            OutputView.printResult(racingGameService.raceWith(new DefaultEngine()));
-        }
+        OutputView.printResult(racingGameService.getRacingGameResult());
     }
 }

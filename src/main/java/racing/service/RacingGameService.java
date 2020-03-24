@@ -2,23 +2,34 @@ package racing.service;
 
 import racing.domain.Engine;
 import racing.domain.RacingCars;
+import racing.dto.RacingGameInfo;
+import racing.dto.RacingGameResult;
 
 public class RacingGameService {
 
     private final RacingCars racingCars;
+    private final RacingGameInfo racingGameInfo;
+    private final RacingGameResult racingGameResult;
 
-    public RacingGameService(final int numberOfCar) {
-        if (numberOfCar <= 0) {
-            throw new IllegalArgumentException("0대 이하의 차는 경기할 수 없습니다");
+    public RacingGameService(RacingGameInfo racingGameInfo) {
+        this.racingGameInfo = racingGameInfo;
+        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
+        this.racingGameResult = new RacingGameResult();
+    }
+
+    public void raceWith(Engine engine) {
+        for (int i = 1; i < racingGameInfo.getCountOfMovement() + 1; i++) {
+            RacingCars racingCarPerRound = racingCars.runWith(engine);
+            recordCurrentRound(racingCarPerRound);
         }
-        this.racingCars = new RacingCars(numberOfCar);
     }
 
-    public RacingCars raceWith(Engine engine) {
-        return racingCars.runWith(engine);
+    private void recordCurrentRound(RacingCars racingCars) {
+        racingGameResult.record(racingCars);
     }
 
-    public RacingCars getRacingCars() {
-        return racingCars;
+    public RacingGameResult getRacingGameResult() {
+        return racingGameResult;
     }
+
 }
