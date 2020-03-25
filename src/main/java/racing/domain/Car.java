@@ -4,10 +4,14 @@ public class Car {
 
     private int drivenDistance = 0;
 
-    private Mover mover = new Mover();
+    private Mover carMover;
+
+    public Car(Mover mover) {
+        carMover = mover;
+    }
 
     public void move() {
-        drivenDistance += mover.moveResult();
+        drivenDistance += carMover.moveResult();
     }
 
     public int getDrivenDistance() {

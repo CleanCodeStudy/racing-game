@@ -2,19 +2,18 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.Mover;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MoverTest {
+class CarMoverTest {
 
     @DisplayName("MoveResult 가 0또는 1을 반환하는지 검사")
     @Test
     void testMoveResult() {
         // given
-        Mover mover = new Mover();
+        CarMover carMover = new CarMover();
 
         // then
-        assertThat(mover.moveResult()).isBetween(Mover.GO_NOTHING, Mover.GO_FORWARD);
+        assertThat(carMover.moveResult()).isBetween(CarMover.GO_NOTHING, CarMover.GO_FORWARD);
     }
 }

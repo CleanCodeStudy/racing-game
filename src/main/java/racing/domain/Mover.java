@@ -1,28 +1,21 @@
 package racing.domain;
 
-import java.util.Random;
+public interface Mover {
 
-public class Mover {
+    int moveResult();
 
-    private static final int FORWARD_CONDITION = 4;
-    public static final int GO_FORWARD = 1;
-    public static final int GO_NOTHING = 0;
+    enum Status {
+        GO_FORWARD(1),
+        GO_NOTHING(0);
 
-    private Random random = new Random();
+        private int value;
 
-    public int moveResult() {
-        int randomNum = getRandomIntUnder10();
-        if (isGoForward(randomNum)) {
-            return GO_FORWARD;
+        Status(int value) {
+            this.value = value;
         }
-        return GO_NOTHING;
-    }
 
-    private int getRandomIntUnder10() {
-        return random.nextInt(10);
-    }
-
-    private boolean isGoForward(int randomNum) {
-        return FORWARD_CONDITION <= randomNum;
+        public int getValue() {
+            return value;
+        }
     }
 }
