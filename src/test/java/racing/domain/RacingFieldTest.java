@@ -2,8 +2,6 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.RacingField;
-import racing.domain.RacingResult;
 
 import java.util.List;
 
@@ -19,15 +17,16 @@ class RacingFieldTest {
         int carNumbers = 2;
         RacingField racingField = new RacingField(totalTurns, carNumbers);
 
-        RacingResult racingResult = racingField.getRacingResult();
-        List<List<Integer>> racingTurns = racingResult.getRacingTurns();
+        List<RacingTurn> racingTurns = racingField.getRacingTurns();
 
         // then
         assertThat(racingTurns.size()).isEqualTo(totalTurns);
 
-        for (List<Integer> racingTurn : racingTurns) {
-            assertThat(racingTurn.size()).isEqualTo(carNumbers);
-            racingTurn.forEach(distance -> assertThat(distance).isBetween(0, totalTurns));
+        for (RacingTurn racingTurn : racingTurns) {
+            List<Integer> racingResult = racingTurn.getRacingResult();
+            assertThat(racingResult.size()).isEqualTo(carNumbers);
+            racingResult.forEach(distance -> assertThat(distance).isBetween(0, totalTurns));
         }
+        // 여기서 for문 쓰지 말라고 했던거 기억나는데.. 어떻게 하면 좋을지 모르겠습니다..
     }
 }

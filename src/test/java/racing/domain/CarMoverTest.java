@@ -7,13 +7,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarMoverTest {
 
-    @DisplayName("MoveResult 가 0또는 1을 반환하는지 검사")
+    @DisplayName("MoveResult 가 원하는 값을 반환 하는지 검사")
     @Test
     void testMoveResult() {
         // given
-        CarMover carMover = new CarMover();
+        CarMover carMover = new CarMover() {
+            @Override
+            public int moveResult() {
+                return CarMover.GO_FORWARD;
+            }
+        };
 
         // then
-        assertThat(carMover.moveResult()).isBetween(CarMover.GO_NOTHING, CarMover.GO_FORWARD);
+        assertThat(carMover.moveResult()).isEqualTo(CarMover.GO_FORWARD);
     }
 }

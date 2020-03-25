@@ -1,9 +1,7 @@
 package racing.domain;
 
 public class Car {
-
     private int drivenDistance = 0;
-
     private Mover carMover;
 
     public Car(Mover mover) {
@@ -17,5 +15,4 @@ public class Car {
     public int getDrivenDistance() {
         return drivenDistance;
     }
-
 }

@@ -5,38 +5,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingField {
-
     private final int totalTurns;
     private final List<Car> cars;
 
-    private RacingResult racingResult;
+    private List<RacingTurn> racingTurns;
 
     public RacingField(int totalTurns, int carNumbers) {
         this.totalTurns = totalTurns;
         this.cars = createCars(carNumbers);
+        this.racingTurns = createRacingResult();
     }
 
-    public RacingResult getRacingResult() {
-        if (racingResult == null) {
-            racingResult = createRacingResult();
-        }
-        return racingResult;
+    public List<RacingTurn> getRacingTurns() {
+        return racingTurns;
     }
 
-    private RacingResult createRacingResult() {
-        List<List<Integer>> racingTurns = new ArrayList<>();
-
+    private List<RacingTurn> createRacingResult() {
+        List<RacingTurn> racingTurns = new ArrayList<>();
         for (int turn = 0; turn < totalTurns; turn++) {
             nextTurn();
-            racingTurns.add(getCarDistances());
+            RacingTurn racingTurn = new RacingTurn(getCarDistances());
+            racingTurns.add(racingTurn);
         }
-        return new RacingResult(racingTurns);
+        return racingTurns;
     }
 
     private void nextTurn() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.forEach(Car::move);
     }
 
     private List<Integer> getCarDistances() {
@@ -47,8 +42,9 @@ public class RacingField {
 
     private List<Car> createCars(int carNumbers) {
         List<Car> cars = new ArrayList<>();
+        Mover mover = new CarMover();
         for (int i = 0; i < carNumbers; i++) {
-            Car car = new Car();
+            Car car = new Car(mover);
             cars.add(car);
         }
         return cars;

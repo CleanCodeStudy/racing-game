@@ -1,11 +1,8 @@
 package racing.view;
 
-import racing.view.OutputView;
-
 import java.util.Scanner;
 
 public class InputHelper {
-
     private Scanner scanner;
     private OutputView outputView;
 

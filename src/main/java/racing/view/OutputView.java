@@ -1,21 +1,19 @@
 package racing.view;
 
-import racing.domain.RacingResult;
+import racing.domain.RacingTurn;
 
 import java.util.List;
 
 public class OutputView {
-
     private static final String CAR_FOOTPRINT = "-";
     private static final String RACING_RESULT_NOTICE = "실행 결과";
     private static final String INPUT_CAR_NUMBERS_NOTICE = "자동차 대수는 몇 대 인가요?";
     private static final String INPUT_GAME_TURNS_NOTICE = "시도 할 횟수는 몇 회 인가요?";
 
-    public void printRacingResult(RacingResult racingResult) {
-        List<List<Integer>> racingTurns = racingResult.getRacingTurns();
+    public void printRacingResult(List<RacingTurn> racingTurns) {
         printStringOf(RACING_RESULT_NOTICE);
-        for (List<Integer> racingTurn : racingTurns) {
-            printTurnOfRacing(racingTurn);
+        for (RacingTurn racingTurn : racingTurns) {
+            printTurnOfRacing(racingTurn.getRacingResult());
             printChangeLine();
         }
     }

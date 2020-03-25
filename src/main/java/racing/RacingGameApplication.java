@@ -5,7 +5,6 @@ import racing.view.InputHelper;
 import racing.view.OutputView;
 
 public class RacingGameApplication {
-
     public static void main(String[] args) {
 
         OutputView outputView = new OutputView();
@@ -16,6 +15,6 @@ public class RacingGameApplication {
 
         RacingField racingField = new RacingField(totalGameTurns, carNumbers);
 
-        outputView.printRacingResult(racingField.getRacingResult());
+        outputView.printRacingResult(racingField.getRacingTurns());
     }
 }

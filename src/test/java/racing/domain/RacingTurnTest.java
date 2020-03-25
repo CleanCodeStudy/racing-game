@@ -9,15 +9,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RacingResultTest {
+class RacingTurnTest {
 
-    @DisplayName("객체 생성 테스트")
+    @DisplayName("일급 객체 생성 테스트")
     @Test
     void racingResult() {
         // given
-        List<List<Integer>> racingTurns = Arrays.asList(Arrays.asList(1, 2, 3));
+        RacingTurn racingTurn = new RacingTurn(Arrays.asList(1, 2, 3));
 
         // then
-        assertThat(racingTurns).isEqualTo(Arrays.asList(Arrays.asList(1, 2, 3)));
+        assertThat(racingTurn.getRacingResult()).isEqualTo((Arrays.asList(1, 2, 3)));
     }
 }
