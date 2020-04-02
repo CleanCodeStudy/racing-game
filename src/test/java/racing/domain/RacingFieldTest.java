@@ -3,30 +3,48 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingFieldTest {
 
-    @DisplayName("레이싱 결과가 범위 값 내에 있는 지 확인 및 턴, 차 수 확인")
+    @DisplayName("레이싱 게임 입력 턴 수에 따른 결과 턴 수 확인")
     @Test
-    void getRacingResult() {
+    void racingTurnsSizeCheck() {
         // given
         int totalTurns = 3;
-        int carNumbers = 2;
-        RacingField racingField = new RacingField(totalTurns, carNumbers);
+        RacingCars emptyCars = new RacingCars(Collections.emptyList());
+        RacingField racingField = new RacingField(totalTurns, emptyCars);
 
-        List<RacingTurn> racingTurns = racingField.getRacingTurns();
+        // when
+        List<RacingTurn> racingTurns = racingField.race();
 
         // then
         assertThat(racingTurns.size()).isEqualTo(totalTurns);
+    }
 
-        for (RacingTurn racingTurn : racingTurns) {
-            List<Integer> racingResult = racingTurn.getRacingResult();
-            assertThat(racingResult.size()).isEqualTo(carNumbers);
-            racingResult.forEach(distance -> assertThat(distance).isBetween(0, totalTurns));
-        }
-        // 여기서 for문 쓰지 말라고 했던거 기억나는데.. 어떻게 하면 좋을지 모르겠습니다..
+    @DisplayName("레이싱 게임 시작 후 레이싱 결과가 제대로 나오는지 확인")
+    @Test
+    void asdf() {
+        // given
+        Car car = new Car(() -> true);
+        List<Car> cars = Arrays.asList(car);
+
+        RacingCars racingCars = new RacingCars(cars);
+        int totalTurns = 1;
+
+        RacingField racingField = new RacingField(totalTurns, racingCars);
+
+        RacingTurn stubRacingTurn = new RacingTurn(Arrays.asList(1));
+
+        // when
+        List<RacingTurn> racingTurns = racingField.race();
+
+        // then
+        assertThat(racingTurns.get(0).getRacingResult()).isEqualTo(stubRacingTurn.getRacingResult());
+
     }
 }

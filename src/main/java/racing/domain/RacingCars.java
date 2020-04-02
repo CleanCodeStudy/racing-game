@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<Car> cars;
@@ -18,5 +19,11 @@ public class RacingCars {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public List<Integer> getDistances() {
+        return cars.stream()
+                .map(Car::getDrivenDistance)
+                .collect(Collectors.toList());
     }
 }

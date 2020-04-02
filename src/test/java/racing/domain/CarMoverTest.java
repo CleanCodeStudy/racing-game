@@ -13,12 +13,12 @@ class CarMoverTest {
         // given
         CarMover carMover = new CarMover() {
             @Override
-            public int canMove() {
-                return CarMover.GO_FORWARD;
+            public boolean canMove() {
+                return true;
             }
         };
 
         // then
-        assertThat(carMover.canMove()).isEqualTo(CarMover.GO_FORWARD);
+        assertThat(carMover.canMove()).isEqualTo(true);
     }
 }

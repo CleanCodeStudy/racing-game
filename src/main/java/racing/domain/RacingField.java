@@ -17,16 +17,10 @@ public class RacingField {
         List<RacingTurn> racingTurns = new ArrayList<>();
         for (int turn = 0; turn < totalTurns; turn++) {
             racingCars.move();
-            RacingTurn racingTurn = new RacingTurn(getCarDistances());
+            RacingTurn racingTurn = new RacingTurn(racingCars.getDistances());
             racingTurns.add(racingTurn);
         }
         return racingTurns;
     }
 
-    private List<Integer> getCarDistances() {
-        return racingCars.getCars()
-                .stream()
-                .map(Car::getDrivenDistance)
-                .collect(Collectors.toList());
-    }
 }

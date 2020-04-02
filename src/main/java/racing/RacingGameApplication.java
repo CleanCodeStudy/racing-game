@@ -1,10 +1,11 @@
 package racing;
 
-import racing.domain.*;
+import racing.domain.CarFactory;
+import racing.domain.CarMover;
+import racing.domain.RacingCars;
+import racing.domain.RacingField;
 import racing.view.InputHelper;
 import racing.view.OutputView;
-
-import java.util.List;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class RacingGameApplication {
         int carNumbers = inputHelper.getCarNumbers();
         int totalGameTurns = inputHelper.getTotalGameTurns();
 
-        RacingCars racingCars = CarFactory.createCars(carNumbers, new CarMover());
+        RacingCars racingCars = CarFactory.createRacingCars(carNumbers, new CarMover());
         RacingField racingField = new RacingField(totalGameTurns, racingCars);
 
         outputView.printRacingResult(racingField.race());
