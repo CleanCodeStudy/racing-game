@@ -9,7 +9,9 @@ public class Car {
     }
 
     public void move() {
-        drivenDistance += carMover.moveResult();
+        if (carMover.canMove()) {
+            drivenDistance++;
+        }
     }
 
     public int getDrivenDistance() {

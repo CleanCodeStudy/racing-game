@@ -8,45 +8,30 @@ public class RacingField {
     private final int totalTurns;
     private final List<Car> cars;
 
-    private List<RacingTurn> racingTurns;
-
-    public RacingField(int totalTurns, int carNumbers) {
+    public RacingField(int totalTurns, List<Car> cars) {
         this.totalTurns = totalTurns;
-        this.cars = createCars(carNumbers);
-        this.racingTurns = createRacingResult();
+        this.cars = cars;
     }
 
-    public List<RacingTurn> getRacingTurns() {
-        return racingTurns;
-    }
-
-    private List<RacingTurn> createRacingResult() {
+    public List<RacingTurn> race() {
         List<RacingTurn> racingTurns = new ArrayList<>();
         for (int turn = 0; turn < totalTurns; turn++) {
             nextTurn();
             RacingTurn racingTurn = new RacingTurn(getCarDistances());
             racingTurns.add(racingTurn);
         }
-        return racingTurns;
+        return new ArrayList<>(racingTurns);
     }
 
     private void nextTurn() {
-        cars.forEach(Car::move);
+        for (Car car : cars) {
+            car.move();
+        }
     }
 
     private List<Integer> getCarDistances() {
         return cars.stream()
                 .map(Car::getDrivenDistance)
                 .collect(Collectors.toList());
-    }
-
-    private List<Car> createCars(int carNumbers) {
-        List<Car> cars = new ArrayList<>();
-        Mover mover = new CarMover();
-        for (int i = 0; i < carNumbers; i++) {
-            Car car = new Car(mover);
-            cars.add(car);
-        }
-        return cars;
     }
 }
