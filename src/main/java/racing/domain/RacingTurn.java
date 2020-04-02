@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingTurn {
@@ -11,6 +12,6 @@ public class RacingTurn {
     }
 
     public List<Integer> getRacingResult() {
-        return racingResult;
+        return new ArrayList<>(racingResult);
     }
 }

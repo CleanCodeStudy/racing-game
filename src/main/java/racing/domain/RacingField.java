@@ -6,31 +6,26 @@ import java.util.stream.Collectors;
 
 public class RacingField {
     private final int totalTurns;
-    private final List<Car> cars;
+    private final RacingCars racingCars;
 
-    public RacingField(int totalTurns, List<Car> cars) {
+    public RacingField(int totalTurns, RacingCars racingCars) {
         this.totalTurns = totalTurns;
-        this.cars = cars;
+        this.racingCars = racingCars;
     }
 
     public List<RacingTurn> race() {
         List<RacingTurn> racingTurns = new ArrayList<>();
         for (int turn = 0; turn < totalTurns; turn++) {
-            nextTurn();
+            racingCars.move();
             RacingTurn racingTurn = new RacingTurn(getCarDistances());
             racingTurns.add(racingTurn);
         }
-        return new ArrayList<>(racingTurns);
-    }
-
-    private void nextTurn() {
-        for (Car car : cars) {
-            car.move();
-        }
+        return racingTurns;
     }
 
     private List<Integer> getCarDistances() {
-        return cars.stream()
+        return racingCars.getCars()
+                .stream()
                 .map(Car::getDrivenDistance)
                 .collect(Collectors.toList());
     }

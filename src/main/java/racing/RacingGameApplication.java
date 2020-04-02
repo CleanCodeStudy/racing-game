@@ -14,8 +14,8 @@ public class RacingGameApplication {
         int carNumbers = inputHelper.getCarNumbers();
         int totalGameTurns = inputHelper.getTotalGameTurns();
 
-        List<Car> cars = CarFactory.createCars(carNumbers, new CarMover());
-        RacingField racingField = new RacingField(totalGameTurns, cars);
+        RacingCars racingCars = CarFactory.createCars(carNumbers, new CarMover());
+        RacingField racingField = new RacingField(totalGameTurns, racingCars);
 
         outputView.printRacingResult(racingField.race());
     }
