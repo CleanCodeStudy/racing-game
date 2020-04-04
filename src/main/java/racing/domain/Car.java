@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.domain.support.Engine;
+
 public class Car {
 
     private int location;
@@ -11,8 +13,11 @@ public class Car {
         this.location = car.getLocation();
     }
 
-    public void tryMoveWith(Engine engine) {
-        location += engine.getPower();
+    public int tryMoveWith(Engine engine) {
+        if (engine.enough()) {
+            location++;
+        }
+        return this.location;
     }
 
     public int getLocation() {

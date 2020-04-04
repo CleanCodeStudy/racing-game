@@ -1,19 +1,20 @@
 package racing.dto;
 
-import racing.domain.RacingCars;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private List<RacingCars> racingCarsPerRound = new ArrayList<>();
+    private List<RacingCarsOfPerRound> racingCarsPerRound = new ArrayList<>();
 
-    public RacingGameResult record(RacingCars racingCars) {
-        racingCarsPerRound.add(new RacingCars(racingCars));
-        return this;
+    public void record(RacingCarsOfPerRound racingCarsOfPerRound) {
+        racingCarsPerRound.add(racingCarsOfPerRound);
     }
 
-    public List<RacingCars> getRacingCarsPerRound() {
+    public List<RacingCarsOfPerRound> getRacingCarsPerRound() {
         return racingCarsPerRound;
+    }
+
+    public int totalGameRound() {
+        return racingCarsPerRound.size();
     }
 }
