@@ -1,10 +1,12 @@
 package racing.domain;
 
 import racing.domain.support.Engine;
+import racing.vo.CarOfPerRound;
+import racing.vo.RacingCarsOfPerRound;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class RacingCars {
 
@@ -17,12 +19,6 @@ public class RacingCars {
         this.cars = createCar(numberOfCar);
     }
 
-    public RacingCars(RacingCars racingCars) {
-        this.cars = racingCars.getCars().stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-    }
-
     private List<Car> createCar(int numberOfCar) {
         List<Car> cars = new ArrayList<>(numberOfCar);
         for (int i = 0; i < numberOfCar; i++) {
@@ -31,15 +27,25 @@ public class RacingCars {
         return cars;
     }
 
-    public RacingCars runWith(Engine engine) {
+    public RacingCarsOfPerRound runWith(Engine engine) {
+        List<CarOfPerRound> carOfPerRounds = new ArrayList<>(cars.size());
         for (Car car : cars) {
             car.tryMoveWith(engine);
+            carOfPerRounds.add(new CarOfPerRound(car));
         }
-        return new RacingCars(this);
+        return new RacingCarsOfPerRound(carOfPerRounds);
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(cars, that.cars);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }

@@ -1,4 +1,4 @@
-package racing.dto;
+package racing.vo;
 
 import racing.domain.Car;
 

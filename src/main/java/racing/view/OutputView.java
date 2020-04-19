@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.dto.CarOfPerRound;
-import racing.dto.RacingCarsOfPerRound;
 import racing.dto.RacingGameResult;
+import racing.vo.CarOfPerRound;
+import racing.vo.RacingCarsOfPerRound;
 
 import java.util.List;
 

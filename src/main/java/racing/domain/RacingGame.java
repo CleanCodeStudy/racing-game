@@ -1,9 +1,9 @@
 package racing.domain;
 
 import racing.domain.support.Engine;
-import racing.dto.RacingCarsOfPerRound;
 import racing.dto.RacingGameInfo;
 import racing.dto.RacingGameResult;
+import racing.vo.RacingCarsOfPerRound;
 
 public class RacingGame {
 
@@ -19,13 +19,12 @@ public class RacingGame {
 
     public void raceWith(Engine engine) {
         for (int i = 1; i < racingGameInfo.getCountOfMovement() + 1; i++) {
-            RacingCars racingCarPerRound = racingCars.runWith(engine);
-            recordCurrentRound(i, racingCarPerRound);
+            recordCurrentRound(racingCars.runWith(engine));
         }
     }
 
-    private void recordCurrentRound(int currentRound, RacingCars racingCars) {
-        racingGameResult.record(new RacingCarsOfPerRound(currentRound, racingCars));
+    private void recordCurrentRound(RacingCarsOfPerRound racingCars) {
+        racingGameResult.record(racingCars);
     }
 
     public RacingGameResult getRacingGameResult() {

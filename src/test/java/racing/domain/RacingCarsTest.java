@@ -16,7 +16,7 @@ class RacingCarsTest {
     void createCarTest(int condition) {
         RacingCars racingCars = new RacingCars(condition);
 
-        assertThat(racingCars.getCars().size()).isEqualTo(condition);
+        assertThat(racingCars).isEqualTo(new RacingCars(condition));
     }
 
     @DisplayName("0이하의 자동차 대수를 입력받으면 익셉션을 던진다")

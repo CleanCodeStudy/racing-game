@@ -9,13 +9,13 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class CarTest {
 
-    @DisplayName("Car가 4이상의 숫자를 얻으면 이동하고, 4이하의 숫자를 얻으면 이동하지 않는다")
+    @DisplayName("Car 가 4이상의 숫자를 얻으면 이동하고, 4이하의 숫자를 얻으면 이동하지 않는다")
     @CsvSource({"4, 1", "3, 0"})
     @ParameterizedTest
     void moveCar(int input, int expected) {
         //given
         int moveCondition = 4;
-        Engine engine = () -> input >= moveCondition ? true : false;
+        Engine engine = () -> input >= moveCondition;
         Car car = new Car();
 
         // when
