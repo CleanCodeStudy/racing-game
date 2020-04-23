@@ -21,7 +21,8 @@ class RacingCarsTest {
         RacingCars racingCars = new RacingCars(cars);
 
         // then
-        assertThat(racingCars.getCars()).isEqualTo(Arrays.asList(car1, car2));
+        assertThat(racingCars).isEqualTo(Arrays.asList(car1, car2));
+        // 예도 getcars없애야되서 뱌ㅏ꿔야함
     }
 
     @DisplayName("RacingCars의 move를 호출 했을 때 주행거리가 바뀌는지 검사")

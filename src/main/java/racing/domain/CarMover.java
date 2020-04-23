@@ -10,12 +10,8 @@ public class CarMover implements Mover {
 
     @Override
     public boolean canMove() {
-        int randomNum = getRandomIntUnder(RANDOM_ADJUSTER);
+        int randomNum = random.nextInt(RANDOM_ADJUSTER);
         return FORWARD_CONDITION <= randomNum;
-    }
-
-    private int getRandomIntUnder(int number) {
-        return random.nextInt(number);
     }
 
 }
