@@ -23,6 +23,12 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getCarNames() {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

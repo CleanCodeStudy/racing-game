@@ -5,10 +5,10 @@ import java.util.List;
 
 public class CarFactory {
 
-    public static RacingCars createRacingCars(int quantity, Mover mover) {
+    public static RacingCars createRacingCars(List<String> carNames, Mover mover) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
-            Car car = new Car(mover);
+        for (String carName : carNames) {
+            Car car = new Car(carName, mover);
             cars.add(car);
         }
         return new RacingCars(cars);

@@ -13,14 +13,13 @@ public class RacingField {
         this.racingCars = racingCars;
     }
 
-    public List<RacingTurn> race() {
+    public RacingResult race() {
         List<RacingTurn> racingTurns = new ArrayList<>();
         for (int turn = 0; turn < totalTurns; turn++) {
             racingCars.move();
             RacingTurn racingTurn = new RacingTurn(racingCars.getDistances());
             racingTurns.add(racingTurn);
         }
-        return racingTurns;
+        return new RacingResult(racingTurns, racingCars.getCarNames());
     }
-
 }

@@ -5,15 +5,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class RacingTurn {
+    private final List<Integer> carDistances;
 
-    private final List<Integer> racingResult;
-
-    public RacingTurn(List<Integer> racingResult) {
-        this.racingResult = racingResult;
+    public RacingTurn(List<Integer> carDistances) {
+        this.carDistances = carDistances;
     }
 
-    public List<Integer> getRacingResult() {
-        return new ArrayList<>(racingResult);
+    public List<Integer> getCarDistances() {
+        return new ArrayList<>(carDistances);
     }
 
     @Override
@@ -21,11 +20,11 @@ public class RacingTurn {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingTurn that = (RacingTurn) o;
-        return Objects.equals(racingResult, that.racingResult);
+        return Objects.equals(carDistances, that.carDistances);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(racingResult);
+        return Objects.hash(carDistances);
     }
 }
