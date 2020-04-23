@@ -14,15 +14,15 @@ class RacingCarsTest {
     @Test
     void racingCars() {
         // given
-        Car car1 = new Car(new CarMover());
-        Car car2 = new Car(new CarMover());
+        CarMover carMover = new CarMover();
+        Car car1 = new Car(carMover);
+        Car car2 = new Car(carMover);
         List<Car> cars = Arrays.asList(car1, car2);
 
         RacingCars racingCars = new RacingCars(cars);
 
         // then
-        assertThat(racingCars).isEqualTo(Arrays.asList(car1, car2));
-        // 예도 getcars없애야되서 뱌ㅏ꿔야함
+        assertThat(racingCars).isEqualTo(new RacingCars(Arrays.asList(car1, car2)));
     }
 
     @DisplayName("RacingCars의 move를 호출 했을 때 주행거리가 바뀌는지 검사")

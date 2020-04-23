@@ -10,15 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @DisplayName("move() 호출시 거리값이 잘 계산되어 나오는지 확인")
-    @CsvSource({"true", "false"})
+    @CsvSource({"true,1", "false,0"})
     @ParameterizedTest
-        // 파라미터  @ParameterizedTest 검색해서 true일때 false 일떄 ㄴ둘다테스트를 한꺼번에 가능
-    void distanceRangeCheck(Boolean state) {
+    void distanceRangeCheck(Boolean state, int expectedDistance) {
         // given
-        Car car = new Car(() -> true);//이 true놈을 변수로 둬서
+        Car car = new Car(() -> state);
         car.move();
 
         // then
-        assertThat(car.getDrivenDistance()).isEqualTo(1);
+        assertThat(car.getDrivenDistance()).isEqualTo(expectedDistance);
     }
 }

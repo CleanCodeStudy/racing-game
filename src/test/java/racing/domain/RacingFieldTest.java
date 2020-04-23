@@ -33,19 +33,17 @@ class RacingFieldTest {
         Car car = new Car(() -> true);
         List<Car> cars = Arrays.asList(car);
 
-        RacingCars racingCars = new RacingCars(cars);
         int totalTurns = 1;
-
+        RacingCars racingCars = new RacingCars(cars);
         RacingField racingField = new RacingField(totalTurns, racingCars);
 
-        RacingTurn expectedRacingTurn = new RacingTurn(Arrays.asList(1));
-        // 밑은 리스트니까 얘또 리스트로 묶어서 ㅁ비교를 하는게 낫다.
+        RacingTurn racingTurn = new RacingTurn(Arrays.asList(1));
+        List<RacingTurn> expectedRacingTurns = Arrays.asList(racingTurn);
 
         // when
         List<RacingTurn> racingTurns = racingField.race();
 
         // then
-        assertThat(racingTurns.get(0).getRacingResult()).isEqualTo(expectedRacingTurn.getRacingResult());
-        // equals를 통해서 테스트를 하느 편이 더 낫다.
+        assertThat(racingTurns).isEqualTo(expectedRacingTurns);
     }
 }

@@ -15,19 +15,18 @@ class CarFactoryTest {
     @Test
     void createCars() {
         // given
-        int quantity = 3;
+        int quantity = 2;
         CarMover carMover = new CarMover();
         List<Car> cars = new ArrayList<>();
         cars.add(new Car(carMover));
         cars.add(new Car(carMover));
         cars.add(new Car(carMover));
-        RacingCars expect = new RacingCars(cars);
+        RacingCars expectedRacingCars = new RacingCars(cars);
 
         //when
         RacingCars racingCars = CarFactory.createRacingCars(quantity, carMover);
 
         // then
-        assertThat(racingCars).isEqualTo(expect);
-        // getCars는  tesㅅ에서만 써서 지워야함 그러기위해 변형된 테스트코드
+        assertThat(racingCars).isEqualTo(expectedRacingCars);
     }
 }

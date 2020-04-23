@@ -18,8 +18,6 @@ class RacingTurnTest {
         RacingTurn racingTurn = new RacingTurn(Arrays.asList(1, 2, 3));
 
         // then
-        assertThat(racingTurn.getRacingResult()).isEqualTo((Arrays.asList(1, 2, 3)));
-        // 지금은 .getRacingResult() 를 테스트를 하는거지 일급객체테스트를 하는건 아ㅣㄴㅁ.
-        // 테스트 이름을 바꾸던지 아니면 냉ㅇ을 바구던지
+        assertThat(racingTurn).isEqualTo(new RacingTurn(Arrays.asList(1, 2, 3)));
     }
 }
