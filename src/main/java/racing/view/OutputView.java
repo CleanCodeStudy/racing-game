@@ -13,14 +13,15 @@ public class OutputView {
     public static void printResult(RacingGameResult racingGameResult) {
         List<RacingCarsOfPerRound> racingCarsPerRound = racingGameResult.getRacingCarsPerRound();
         for (RacingCarsOfPerRound racingCarsOfPerRound : racingCarsPerRound) {
-            drawTrack(racingCarsOfPerRound);
+            printNameAndTrack(racingCarsOfPerRound);
             System.out.println();
         }
 
     }
 
-    private static void drawTrack(RacingCarsOfPerRound racingCarsOfPerRound) {
+    private static void printNameAndTrack(RacingCarsOfPerRound racingCarsOfPerRound) {
         for (CarOfPerRound carOfPerRound : racingCarsOfPerRound.getCarOfPerRounds()) {
+            System.out.printf("%s: ", carOfPerRound.getName());
             drawTrack(carOfPerRound);
         }
     }

@@ -13,7 +13,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameInfo racingGameInfo) {
         this.racingGameInfo = racingGameInfo;
-        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
+        this.racingCars = new RacingCars(racingGameInfo.getCarGroup());
         this.racingGameResult = new RacingGameResult();
     }
 

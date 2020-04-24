@@ -1,21 +1,30 @@
 package racing.dto;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingGameInfo {
-    private int numberOfCar;
+    private static final String NAME_SPLITTER = ",";
+
+    private List<String> carGroup;
     private int countOfMovement;
 
-    public RacingGameInfo(String numberOfCar, String countOfMovement) {
+    public RacingGameInfo(String nameOfCars, String countOfMovement) {
         try {
-            int inputNumberOfCar = Integer.parseInt(numberOfCar);
+            List<String> carGroup = toCarGroup(nameOfCars);
             int inputCountOfMovement = Integer.parseInt(countOfMovement);
 
-            validation(inputNumberOfCar, inputCountOfMovement);
+            validation(carGroup.size(), inputCountOfMovement);
 
-            this.numberOfCar = inputNumberOfCar;
+            this.carGroup = carGroup;
             this.countOfMovement = inputCountOfMovement;
         } catch (NumberFormatException ne) {
             throw new IllegalArgumentException("Integer 값만 들어올 수 있습니다");
         }
+    }
+
+    private List<String> toCarGroup(String carGroup) {
+        return Arrays.asList(carGroup.trim().split(NAME_SPLITTER));
     }
 
     private void validation(int inputNumberOfCar, int inputCountOfMovement) {
@@ -24,11 +33,12 @@ public class RacingGameInfo {
         }
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public List<String> getCarGroup() {
+        return carGroup;
     }
 
     public int getCountOfMovement() {
         return countOfMovement;
     }
+
 }

@@ -6,13 +6,11 @@ import java.util.Objects;
 
 public class Car {
 
+    private String name;
     private int location;
 
-    public Car() {
-    }
-
-    public Car(Car car) {
-        this.location = car.getLocation();
+    public Car(String name) {
+        this.name = name;
     }
 
     public void tryMoveWith(Engine engine) {
@@ -23,6 +21,10 @@ public class Car {
 
     public int getLocation() {
         return location;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

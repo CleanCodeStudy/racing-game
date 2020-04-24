@@ -12,17 +12,18 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(final int numberOfCar) {
-        if (numberOfCar <= 0) {
+    public RacingCars(final List<String> carGroup) {
+        int carGroupSize = carGroup.size();
+        if (carGroupSize <= 0) {
             throw new IllegalArgumentException("0대 이하의 차는 경기할 수 없습니다");
         }
-        this.cars = createCar(numberOfCar);
+        this.cars = createCar(carGroup);
     }
 
-    private List<Car> createCar(int numberOfCar) {
-        List<Car> cars = new ArrayList<>(numberOfCar);
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+    private List<Car> createCar(final List<String> carGroup) {
+        List<Car> cars = new ArrayList<>(carGroup.size());
+        for (String carName : carGroup) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
