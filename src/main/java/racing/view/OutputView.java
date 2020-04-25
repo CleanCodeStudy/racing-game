@@ -16,7 +16,7 @@ public class OutputView {
 
     public void printRacingResult(RacingResult racingResult) {
         printLineOf(RACING_RESULT_NOTICE);
-        for (RacingTurn racingTurn : racingResult.getRacingTurns()) {
+        for (RacingTurn racingTurn : racingResult.getRacingTurns().get()) {
             printTurnOfRacing(racingResult.getCarNames(), racingTurn.getCarDistances());
             printChangeLine();
         }

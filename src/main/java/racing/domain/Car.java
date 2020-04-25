@@ -8,6 +8,7 @@ public class Car {
     private String name;
 
     public Car(String name, Mover mover) {
+        verifyName(name);
         this.name = name;
         this.mover = mover;
     }
@@ -24,6 +25,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    private void verifyName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("자동차의 이름은 공백일 수 없음.");
+        }
     }
 
     @Override

@@ -20,6 +20,6 @@ public class RacingField {
             RacingTurn racingTurn = new RacingTurn(racingCars.getDistances());
             racingTurns.add(racingTurn);
         }
-        return new RacingResult(racingTurns, racingCars.getCarNames());
+        return new RacingResult(new RacingTurns(racingTurns), racingCars.getCarNames());
     }
 }

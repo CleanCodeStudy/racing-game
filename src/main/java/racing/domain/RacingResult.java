@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 public class RacingResult {
     private List<String> carNames;
     private List<String> winners;
-    private List<RacingTurn> racingTurns;
+    private RacingTurns racingTurns;
 
-    public RacingResult(List<RacingTurn> racingTurns, List<String> carNames) {
+    public RacingResult(RacingTurns racingTurns, List<String> carNames) {
         this.racingTurns = racingTurns;
         this.carNames = carNames;
         this.winners = findWinners();
@@ -25,14 +25,13 @@ public class RacingResult {
         return new ArrayList<>(winners);
     }
 
-    public List<RacingTurn> getRacingTurns() {
-        return new ArrayList<>(racingTurns);
+    public RacingTurns getRacingTurns() {
+        return racingTurns;
     }
 
     private List<String> findWinners() {
         int maxDistance = getMaxDistance();
-        List<Integer> lastTurnCarDistances = getLastRacingTurn().getCarDistances();
-
+        List<Integer> lastTurnCarDistances = racingTurns.getLastTurn().getCarDistances();
         return IntStream.range(0, carNames.size())
                 .boxed()
                 .filter(i -> lastTurnCarDistances.get(i) == maxDistance)
@@ -41,14 +40,11 @@ public class RacingResult {
     }
 
     private int getMaxDistance() {
-        return getLastRacingTurn().getCarDistances().stream()
+        return racingTurns.getLastTurn()
+                .getCarDistances()
+                .stream()
                 .max(Comparator.naturalOrder())
                 .orElseThrow(IllegalStateException::new);
-    }
-
-    private RacingTurn getLastRacingTurn() {
-        int lastTurnIndex = racingTurns.size() - 1;
-        return racingTurns.get(lastTurnIndex);
     }
 
 }
