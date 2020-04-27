@@ -16,7 +16,7 @@ class CarTest {
         //given
         int moveCondition = 4;
         Engine engine = () -> input >= moveCondition;
-        Car car = new Car();
+        Car car = new Car("이름");
 
         // when
         car.tryMoveWith(engine);

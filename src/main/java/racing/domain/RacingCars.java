@@ -1,8 +1,9 @@
 package racing.domain;
 
 import racing.domain.support.Engine;
-import racing.vo.CarOfPerRound;
-import racing.vo.RacingCarsOfPerRound;
+import racing.dto.RacingGameInfo;
+import racing.vo.CarSnapshot;
+import racing.vo.RacingCarsSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,8 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(final List<String> carGroup) {
-        int carGroupSize = carGroup.size();
-        if (carGroupSize <= 0) {
-            throw new IllegalArgumentException("0대 이하의 차는 경기할 수 없습니다");
-        }
-        this.cars = createCar(carGroup);
+    public RacingCars(final RacingGameInfo racingGameInfo) {
+        this.cars = createCar(racingGameInfo.getCarNameGroup());
     }
 
     private List<Car> createCar(final List<String> carGroup) {
@@ -28,13 +25,13 @@ public class RacingCars {
         return cars;
     }
 
-    public RacingCarsOfPerRound runWith(Engine engine) {
-        List<CarOfPerRound> carOfPerRounds = new ArrayList<>(cars.size());
+    public RacingCarsSnapshot runWith(final int round, final Engine engine) {
+        List<CarSnapshot> carSnapshots = new ArrayList<>(cars.size());
         for (Car car : cars) {
             car.tryMoveWith(engine);
-            carOfPerRounds.add(new CarOfPerRound(car));
+            carSnapshots.add(new CarSnapshot(car.getName(), car.getLocation()));
         }
-        return new RacingCarsOfPerRound(carOfPerRounds);
+        return new RacingCarsSnapshot(round, carSnapshots);
     }
 
     @Override

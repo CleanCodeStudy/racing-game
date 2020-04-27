@@ -3,7 +3,7 @@ package racing.domain;
 import racing.domain.support.Engine;
 import racing.dto.RacingGameInfo;
 import racing.dto.RacingGameResult;
-import racing.vo.RacingCarsOfPerRound;
+import racing.vo.RacingCarsSnapshot;
 
 public class RacingGame {
 
@@ -12,18 +12,23 @@ public class RacingGame {
     private final RacingGameResult racingGameResult;
 
     public RacingGame(RacingGameInfo racingGameInfo) {
+        this(new RacingCars(racingGameInfo), racingGameInfo, new RacingGameResult(racingGameInfo));
+    }
+
+    private RacingGame(RacingCars racingCars, RacingGameInfo racingGameInfo, RacingGameResult racingGameResult) {
+        this.racingCars = racingCars;
         this.racingGameInfo = racingGameInfo;
-        this.racingCars = new RacingCars(racingGameInfo.getCarGroup());
-        this.racingGameResult = new RacingGameResult();
+        this.racingGameResult = racingGameResult;
     }
 
     public void raceWith(Engine engine) {
-        for (int i = 1; i < racingGameInfo.getCountOfMovement() + 1; i++) {
-            recordCurrentRound(racingCars.runWith(engine));
+        for (int currentRound = 1; currentRound < racingGameInfo.getCountOfMovement() + 1; currentRound++) {
+            RacingCarsSnapshot snapshot = racingCars.runWith(currentRound, engine);
+            recordRacingGameSnapshot(snapshot);
         }
     }
 
-    private void recordCurrentRound(RacingCarsOfPerRound racingCars) {
+    private void recordRacingGameSnapshot(RacingCarsSnapshot racingCars) {
         racingGameResult.record(racingCars);
     }
 
