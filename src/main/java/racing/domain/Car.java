@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int location;
 
     public Car(String name) {
