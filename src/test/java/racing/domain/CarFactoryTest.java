@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,15 +17,17 @@ class CarFactoryTest {
     void createCars() {
         // given
         int quantity = 2;
+        String name1 = "car1";
+        String name2 = "car2";
+
         CarMover carMover = new CarMover();
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(carMover));
-        cars.add(new Car(carMover));
-        cars.add(new Car(carMover));
+        cars.add(new Car(name1, carMover));
+        cars.add(new Car(name2, carMover));
         RacingCars expectedRacingCars = new RacingCars(cars);
 
         //when
-        RacingCars racingCars = CarFactory.createRacingCars(quantity, carMover);
+        RacingCars racingCars = CarFactory.createRacingCars(Arrays.asList(name1,name2), carMover);
 
         // then
         assertThat(racingCars).isEqualTo(expectedRacingCars);

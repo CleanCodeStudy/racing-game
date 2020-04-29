@@ -20,4 +20,15 @@ class RacingTurnTest {
         // then
         assertThat(racingTurn).isEqualTo(new RacingTurn(Arrays.asList(1, 2, 3)));
     }
+
+    @DisplayName("객체 생성시 넣었던 주행거리를 동일하게 뱉는지 확인")
+    @Test
+    void carDistanceTest() {
+        // given
+        List<Integer> expectedCarDistances = Arrays.asList(1, 2, 3);
+        RacingTurn racingTurn = new RacingTurn(expectedCarDistances);
+
+        // then
+        assertThat(racingTurn.getCarDistances()).isEqualTo(expectedCarDistances);
+    }
 }
