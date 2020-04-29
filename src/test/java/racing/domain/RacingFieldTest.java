@@ -1,49 +1,35 @@
-//package racing.domain;
-//
-//import org.junit.jupiter.api.DisplayName;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.Arrays;
-//import java.util.Collections;
-//import java.util.List;
-//
-//import static org.assertj.core.api.Assertions.assertThat;
-//
-//class RacingFieldTest {
-//
-//    @DisplayName("레이싱 게임 입력 턴 수에 따른 결과 턴 수 확인")
-//    @Test
-//    void racingTurnsSizeCheck() {
-//        // given
-//        int totalTurns = 3;
-//        RacingCars emptyCars = new RacingCars(Collections.emptyList());
-//        RacingField racingField = new RacingField(totalTurns, emptyCars);
-//
-//        // when
-//        List<RacingTurn> racingTurns = racingField.race();
-//
-//        // then
-//        assertThat(racingTurns.size()).isEqualTo(totalTurns);
-//    }
-//
-//    @DisplayName("레이싱 게임 시작 후 레이싱 결과가 제대로 나오는지 확인")
-//    @Test
-//    void asdf() {
-//        // given
-//        Car car = new Car(() -> true);
-//        List<Car> cars = Arrays.asList(car);
-//
-//        int totalTurns = 1;
-//        RacingCars racingCars = new RacingCars(cars);
-//        RacingField racingField = new RacingField(totalTurns, racingCars);
-//
-//        RacingTurn racingTurn = new RacingTurn(Arrays.asList(1));
-//        List<RacingTurn> expectedRacingTurns = Arrays.asList(racingTurn);
-//
-//        // when
-//        List<RacingTurn> racingTurns = racingField.race();
-//
-//        // then
-//        assertThat(racingTurns).isEqualTo(expectedRacingTurns);
-//    }
-//}
+package racing.domain;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class RacingFieldTest {
+
+    @DisplayName("race() 메소드 호출로 RacingResult객체가 제대로 나오는지 확인")
+    @Test
+    void name() {
+        // given
+        List<String> carNames = Arrays.asList("name1", "name2");
+        RacingCars racingCars = CarFactory.createRacingCars(carNames, () -> true);
+        RacingField racingField = new RacingField(1, racingCars);
+
+        RacingTurns expectedRacingTurns = new RacingTurns(Arrays.asList(new RacingTurn(Arrays.asList(1, 1))));
+        RacingResult expectedRacingResult = new RacingResult(expectedRacingTurns, carNames);
+
+        // when
+        RacingResult racingResult = racingField.race();
+
+        // then
+        assertThat(racingResult).isEqualTo(expectedRacingResult);
+
+        //...???
+        // RacingField의 어떤 부분을 테스트 해야될지 잘 모르겠습니다
+        // public 으로 뚫려있는 race() 에서 뱉어내는 RacingResult가 기대하는 값인지를
+        // 테스트하는게 맞는지 모르겠습니다.
+    }
+}

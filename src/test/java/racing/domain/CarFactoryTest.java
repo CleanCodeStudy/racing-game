@@ -16,18 +16,17 @@ class CarFactoryTest {
     @Test
     void createCars() {
         // given
-        int quantity = 2;
         String name1 = "car1";
         String name2 = "car2";
-
         CarMover carMover = new CarMover();
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(name1, carMover));
-        cars.add(new Car(name2, carMover));
+        List<Car> cars = Arrays.asList(
+                new Car(name1, carMover),
+                new Car(name2, carMover)
+        );
         RacingCars expectedRacingCars = new RacingCars(cars);
 
         //when
-        RacingCars racingCars = CarFactory.createRacingCars(Arrays.asList(name1,name2), carMover);
+        RacingCars racingCars = CarFactory.createRacingCars(Arrays.asList(name1, name2), carMover);
 
         // then
         assertThat(racingCars).isEqualTo(expectedRacingCars);

@@ -24,7 +24,7 @@ class CarTest {
 
     @DisplayName("자동차 이름이 공백이면 Exception")
     @Test
-    public void blackCarName() {
+    void blackCarName() {
         // given
         CarMover mover = new CarMover();
 

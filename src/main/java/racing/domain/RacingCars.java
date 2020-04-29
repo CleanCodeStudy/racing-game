@@ -8,6 +8,7 @@ public class RacingCars {
     private List<Car> cars;
 
     public RacingCars(List<Car> cars) {
+        verifyCarsNotEmpty(cars);
         this.cars = cars;
     }
 
@@ -27,6 +28,12 @@ public class RacingCars {
         return cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private void verifyCarsNotEmpty(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("RacingCars는 항상 Car가 1개 이상이어야 합니다.");
+        }
     }
 
     @Override
