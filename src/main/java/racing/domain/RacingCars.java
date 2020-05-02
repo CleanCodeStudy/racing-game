@@ -1,7 +1,7 @@
 package racing.domain;
 
-import racing.domain.support.Engine;
 import racing.dto.RacingGameInfo;
+import racing.support.Engine;
 import racing.vo.CarSnapshot;
 import racing.vo.RacingCarsSnapshot;
 

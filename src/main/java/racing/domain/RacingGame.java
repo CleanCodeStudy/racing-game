@@ -1,8 +1,8 @@
 package racing.domain;
 
-import racing.domain.support.Engine;
 import racing.dto.RacingGameInfo;
 import racing.dto.RacingGameResult;
+import racing.support.Engine;
 import racing.vo.RacingCarsSnapshot;
 
 public class RacingGame {

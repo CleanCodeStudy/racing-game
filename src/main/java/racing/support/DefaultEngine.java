@@ -1,4 +1,4 @@
-package racing.domain.support;
+package racing.support;
 
 import racing.util.RandomGenerator;
 

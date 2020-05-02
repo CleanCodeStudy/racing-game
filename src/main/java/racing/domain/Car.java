@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.domain.support.Engine;
+import racing.support.Engine;
 
 import java.util.Objects;
 
