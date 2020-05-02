@@ -61,10 +61,8 @@ jacocoTestCoverageVerification {
                 minimum = 0.60
             }
 
-            excludes = [
-                    '*.view.*',
-                    '*.테스트검증대상에서 제외시킬 클래스 이름*'
-            ]
+            includes = ['*.domain.*']
+
         }
 
         rule {
