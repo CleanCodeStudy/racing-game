@@ -9,7 +9,7 @@ public class RacingGame {
 
     public RacingGame(InputValueDto inputValueDto) {
         this.inputValueDto = inputValueDto;
-        this.racingPhase = new RacingPhase(inputValueDto.getNumberOfCars());
+        this.racingPhase = new RacingPhase(inputValueDto.getNamesOfCars());
     }
 
     public GameResult startGame(NumberGenerator numberGenerator) {
@@ -17,8 +17,8 @@ public class RacingGame {
         GameResult gameResult = new GameResult(numberOfAttempts);
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            RacingResult eachRacingResult = racingPhase.startRace(numberGenerator);
-            gameResult.addEachRacingResult(eachRacingResult);
+            PhaseResult eachPhaseResult = racingPhase.startRace(numberGenerator);
+            gameResult.addEachRacingResult(eachPhaseResult);
         }
 
         return gameResult;

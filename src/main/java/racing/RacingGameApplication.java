@@ -9,7 +9,7 @@ import racing.view.OutputView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        InputValueDto inputValueDto = InputView.getInputValue();
+        InputValueDto inputValueDto = InputView.getInputValueWithName();
 
         RacingGame racingGame = new RacingGame(inputValueDto);
 

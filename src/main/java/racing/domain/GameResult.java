@@ -5,27 +5,33 @@ import java.util.List;
 
 
 public class GameResult {
-    private final List<RacingResult> racingResults;
+    private final List<PhaseResult> phaseResults;
     private int numberOfPhase;
 
-    public GameResult() {
-        this.racingResults = new ArrayList<>();
-    }
-
     public GameResult(int numberOfPhase) {
-        this.racingResults = new ArrayList<>();
+        this.phaseResults = new ArrayList<>();
         this.numberOfPhase = numberOfPhase;
     }
 
-    public void addEachRacingResult(RacingResult racingResult) {
-        this.racingResults.add(racingResult);
+    public void addEachRacingResult(PhaseResult phaseResult) {
+        this.phaseResults.add(phaseResult);
     }
 
-    public RacingResult findRacingResultByPhase(int phase) {
-        return racingResults.get(phase - 1);
+    public PhaseResult findRacingResultByPhase(int phase) {
+        try {
+            return phaseResults.get(phase - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new IllegalArgumentException(String.format("존재하지 않는 시도 횟수입니다. - %d \n", phase));
+        }
     }
 
     public int getNumberOfPhase() {
         return numberOfPhase;
+    }
+
+    public List<String> getWinner() {
+        PhaseResult lastResult = findRacingResultByPhase(numberOfPhase);
+
+        return lastResult.getCurrentLeads();
     }
 }

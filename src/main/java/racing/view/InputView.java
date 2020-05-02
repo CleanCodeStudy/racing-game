@@ -6,13 +6,14 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String DELIMETER = ",";
 
-    public static InputValueDto getInputValue() {
+    public static InputValueDto getInputValueWithName() {
         try {
-            int numberOfCars = Integer.parseInt(inputNumberOfCars());
+            String[] namesOfCars = inputNameOfCars().split(DELIMETER);
             int numberOfAttempts = Integer.parseInt(inputNumberOfAttempts());
 
-            return new InputValueDto(numberOfCars, numberOfAttempts);
+            return new InputValueDto(namesOfCars, numberOfAttempts);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
@@ -29,7 +30,7 @@ public class InputView {
     }
 
     public static String inputNameOfCars() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)를 기준으로 구분)");
         return scanner.nextLine();
     }
 }

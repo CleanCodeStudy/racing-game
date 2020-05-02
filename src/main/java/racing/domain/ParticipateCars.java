@@ -2,15 +2,17 @@ package racing.domain;
 
 import racing.domain.common.NumberGenerator;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ParticipateCars {
     private final List<Car> cars;
 
-    public ParticipateCars(int numberOfCars) {
-        this.cars = createCars(numberOfCars);
+    public ParticipateCars(String[] namesOfCars) {
+        cars = createCars(namesOfCars);
     }
 
     public List<Integer> tryMove(NumberGenerator numberGenerator) {
@@ -19,13 +21,33 @@ public class ParticipateCars {
                 .collect(Collectors.toList());
     }
 
-    private List<Car> createCars(int numberOfCars) {
-        List<Car> cars = new ArrayList<>();
+    public Map<String, Integer> tryMoveWithName(NumberGenerator numberGenerator) {
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+/*        Map<String, Integer> moveResults = new LinkedHashMap<>();
+
+        for (Car car : cars) {
+            moveResults.put(car.getName(),car.attemptToMove(numberGenerator.generateNumber()));
         }
 
-        return cars;
+        return moveResults;*/
+
+        return cars.stream()
+                .collect(Collectors.toMap(Car::getName,
+                        car -> car.attemptToMove(numberGenerator.generateNumber()),
+                        (x, y) -> x,
+                        LinkedHashMap::new));
+    }
+
+    private List<Car> createCars(String[] namesOfCars) {
+/*        List<Car> cars = new ArrayList<>();
+
+        for (int i = 0 ; i < namesOfCars.length ; i++) {
+            cars.add(new Car(namesOfCars[i]));
+        }*/
+
+        return Arrays.stream(namesOfCars)
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }

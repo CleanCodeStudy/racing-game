@@ -5,13 +5,11 @@ import racing.domain.common.NumberGenerator;
 public class RacingPhase {
     private final ParticipateCars participateCars;
 
-    public RacingPhase(int numberOfCars) {
-        this.participateCars = new ParticipateCars(numberOfCars);
+    public RacingPhase(String[] namesOfCars) {
+        this.participateCars = new ParticipateCars(namesOfCars);
     }
 
-    public RacingResult startRace(NumberGenerator numberGenerator) {
-        return new RacingResult(participateCars.tryMove(numberGenerator));
+    public PhaseResult startRace(NumberGenerator numberGenerator) {
+        return new PhaseResult(participateCars.tryMoveWithName(numberGenerator));
     }
-
-
 }

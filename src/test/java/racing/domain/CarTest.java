@@ -14,7 +14,7 @@ class CarTest {
             "4, 1", "3, 0"
     })
     void name(int randomNumber, int expectedResult) {
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         int actualResult = car.attemptToMove(randomNumber);
 
