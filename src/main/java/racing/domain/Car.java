@@ -2,8 +2,6 @@ package racing.domain;
 
 import racing.support.Engine;
 
-import java.util.Objects;
-
 public class Car {
 
     private final String name;
@@ -27,16 +25,4 @@ public class Car {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return location == car.location;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(location);
-    }
 }

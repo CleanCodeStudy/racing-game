@@ -7,7 +7,6 @@ import racing.vo.RacingCarsSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class RacingCars {
 
@@ -34,16 +33,4 @@ public class RacingCars {
         return new RacingCarsSnapshot(round, carSnapshots);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingCars that = (RacingCars) o;
-        return Objects.equals(cars, that.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
-    }
 }
