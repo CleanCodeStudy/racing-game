@@ -1,18 +1,26 @@
 package racing.util;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RandomUtilTest {
 
-    @DisplayName("랜덤으로 생성된 값이 0 또는 4이상 9이하의 값만 반환하는지 확인한다.")
-    @RepeatedTest(100)
-    public void getRandomDistance(RepetitionInfo repetitionInfo) {
-        int distance = RandomUtil.getRandomDistance();
-        System.out.println("Repetition #" + repetitionInfo.getCurrentRepetition() + " RandomValue :" +  distance);
-        assertTrue((distance >= 4 && distance <= 9) || distance == 0, "0 또는 4이상 9이하의 값 외의 다른 값이 반환되었습니다.");
+    @DisplayName("랜덤으로 생성된 값이 4보다 작을경우 0을 리턴한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3})
+    public void getRandomDistance1(int distance) {
+        int actual = RandomUtil.getRandomDistance(new FixedNumberGenerator(distance));
+        assertEquals(0, actual);
+    }
+
+    @DisplayName("랜덤으로 생성된 값이 4 이상을 경우 1을 리턴한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5})
+    public void getRandomDistance2(int distance) {
+        int actual = RandomUtil.getRandomDistance(new FixedNumberGenerator(distance));
+        assertEquals(1, actual);
     }
 }

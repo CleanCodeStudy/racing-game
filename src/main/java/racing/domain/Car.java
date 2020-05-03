@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.util.RandomUtil;
-
 public class Car {
     private int distance;
 
@@ -13,7 +11,7 @@ public class Car {
         return distance;
     }
 
-    public void move() {
-        this.distance += RandomUtil.getRandomDistance();
+    public void move(int distance) {
+        this.distance += distance;
     }
 }

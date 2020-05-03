@@ -1,6 +1,8 @@
 package racing.domain;
 
-import racing.view.ResultView;
+import racing.util.NumberGenerator;
+import racing.util.RandomNumberGenerator;
+import racing.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,47 +10,33 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carCount) {
-        this.cars = collectCars(carCount);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void operate(int tryCount) {
-        ResultView resultView = new ResultView();
-        while (remainTryCount(tryCount--)) {
-            moveCars();
-            resultView.printResult(this);
+    public RacingResult operate(int tryCount) {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        List<Integer> racingResult = new ArrayList<>();
+        for (int curTryCount = 0; curTryCount < tryCount; curTryCount++) {
+            moveCars(racingResult, numberGenerator);
         }
+
+        return new RacingResult(racingResult);
     }
 
-    public Car getCar(int idx) {
+    public Car get(int idx) {
         return cars.get(idx);
     }
 
-    public int getSize() {
+    public int size() {
         return cars.size();
     }
 
-    private List<Car> collectCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        while (remainCar(carCount--)) {
-            cars.add(new Car(0));
-        }
-
-        return cars;
-    }
-
-    private boolean remainCar(int carCount) {
-        return carCount > 0;
-    }
-
-    private boolean remainTryCount(int tryCount) {
-        return tryCount > 0;
-    }
-
-    private void moveCars() {
-        for (int idx = 0; idx < getSize(); idx++) {
-            Car car = getCar(idx);
-            car.move();
+    private void moveCars(List<Integer> racingResult, NumberGenerator numberGenerator) {
+        for (int carIdx = 0; carIdx < size(); carIdx++) {
+            Car car = get(carIdx);
+            car.move(RandomUtil.getRandomDistance(numberGenerator));
+            racingResult.add(car.getDistance());
         }
     }
 }
