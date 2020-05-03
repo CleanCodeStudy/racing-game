@@ -1,7 +1,6 @@
 package racing.domain;
 
 import racing.util.NumberGenerator;
-import racing.util.RandomNumberGenerator;
 import racing.util.RandomUtil;
 
 import java.util.ArrayList;
@@ -14,8 +13,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public RacingResult operate(int tryCount) {
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
+    public RacingResult operate(int tryCount, NumberGenerator numberGenerator) {
         List<Integer> racingResult = new ArrayList<>();
         for (int curTryCount = 0; curTryCount < tryCount; curTryCount++) {
             moveCars(racingResult, numberGenerator);
@@ -24,11 +22,11 @@ public class Cars {
         return new RacingResult(racingResult);
     }
 
-    public Car get(int idx) {
+    private Car get(int idx) {
         return cars.get(idx);
     }
 
-    public int size() {
+    private int size() {
         return cars.size();
     }
 

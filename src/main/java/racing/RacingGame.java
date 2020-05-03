@@ -3,6 +3,7 @@ package racing;
 import racing.domain.CarFactory;
 import racing.domain.RacingResult;
 import racing.domain.Cars;
+import racing.util.RandomNumberGenerator;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -16,7 +17,7 @@ public class RacingGame {
         int tryCount = inputView.inputTryCount();
 
         Cars cars = new Cars(CarFactory.createCar(carCount));
-        RacingResult racingResult = cars.operate(tryCount);
+        RacingResult racingResult = cars.operate(tryCount, new RandomNumberGenerator());
         ResultView resultView = new ResultView();
         resultView.printResult(racingResult, carCount);
     }
