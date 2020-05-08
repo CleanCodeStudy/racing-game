@@ -1,6 +1,5 @@
 package racing.domain;
-
-import racing.util.RandomCreator;
+import racing.util.NumberGenerator;
 
 public enum Movement {
     MOVE("MOVE"),
@@ -11,11 +10,15 @@ public enum Movement {
     Movement(String movement) {
     }
 
-    public static Movement nextMovement() {
-        int randomValue = RandomCreator.getRandomValue();
-        if (randomValue > MOVE_CONDITION) {
+    public static Movement nextMovement(NumberGenerator numberGenerator) {
+        int randomValue = numberGenerator.generateNumber();
+        if (randomValue >= MOVE_CONDITION) {
             return MOVE;
         }
         return HOLD;
+    }
+
+    public boolean canMove() {
+        return this.equals(Movement.MOVE);
     }
 }

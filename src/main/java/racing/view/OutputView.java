@@ -1,39 +1,41 @@
 package racing.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import racing.RacingGame;
+import racing.domain.GameInfo;
+import racing.domain.RacingCar;
+import racing.domain.RacingCars;
 
 public class OutputView {
 
-    private static final String START = "\n실행 결과\n";
+    private GameInfo gameInfo;
 
-    private static List<RoundView> roundViews;
+    private RacingCars racingCars;
 
-    public static void initOutputView(int roundCount) {
-        roundViews = new ArrayList<>();
+    public OutputView(GameInfo gameInfo, RacingCars racingCars) {
+        this.gameInfo = gameInfo;
+        this.racingCars = racingCars;
+    }
 
-        for (int i = 0; i < roundCount; i++) {
-            roundViews.add(new RoundView());
+    public void printGameResult() {
+        System.out.println("\n실행 결과\n");
+        for (int round = 0; round <= gameInfo.getRoundCount(); round++) {
+            printRoundResult(round);
+            System.out.println();
         }
     }
 
-    public static void printAllRoundResult() {
-        printStart();
-        for (RoundView roundView : roundViews) {
-            roundView.printCurrentRoundView();
+    private void printRoundResult(int round) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
+            int carRoundPosition = racingCar.getRoundPosition(round);
+            printCarPosition(carRoundPosition);
         }
     }
 
-    public static void printRoundResult(int round) {
-        roundViews.get(round).printCurrentRoundView();
-    }
-
-    public static void printStart() {
-        System.out.println(START);
-    }
-
-    public static List<RoundView> getRoundViews() {
-        return roundViews;
+    private void printCarPosition(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.printf("-");
+        }
+        System.out.println();
     }
 }
 

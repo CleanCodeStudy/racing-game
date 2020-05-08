@@ -1,20 +1,35 @@
 package racing.domain;
 
+import racing.util.NumberGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCar {
 
-    private StringBuilder position = new StringBuilder("-");
+    private List<Integer> roundPosition = new ArrayList<>();
 
-    public void attendRound() {
-        if (Movement.nextMovement().equals(Movement.MOVE)) {
+    public RacingCar() {
+        roundPosition.add(1);
+    }
+
+    public void attendRound(NumberGenerator numberGenerator) {
+        if (Movement.nextMovement(numberGenerator).canMove()) {
             move();
+            return;
         }
+        roundPosition.add(getLastPosition());
     }
 
     private void move() {
-        position.append("-");
+        roundPosition.add(getLastPosition()+1);
     }
 
-    public StringBuilder getPosition() {
-        return position;
+    private int getLastPosition() {
+        return roundPosition.get(roundPosition.size()-1);
+    }
+
+    public int getRoundPosition(int round) {
+        return roundPosition.get(round);
     }
 }
