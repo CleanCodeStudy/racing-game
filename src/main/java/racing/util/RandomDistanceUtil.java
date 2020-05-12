@@ -1,6 +1,6 @@
 package racing.util;
 
-public class RandomUtil {
+public class RandomDistanceUtil {
     private static final int MOVE = 1;
     private static final int STOP = 0;
 

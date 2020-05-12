@@ -1,28 +1,37 @@
 package racing.view;
 
+import racing.domain.Car;
 import racing.domain.RacingResult;
 
+import java.util.List;
+
 public class ResultView {
-    private final String OPERATE_RESULT = "실행 결과";
-    private final String DISTANCE = "-";
-    private final String ENTER = "\n";
-    private final String BORDER = "라운드 종료!!";
+    private static final String OPERATE_RESULT = "실행 결과";
+    private static final String DISTANCE = "-";
+    private static final String ENTER = "\n";
+    private static final String BORDER = "라운드 종료!!";
 
     public ResultView() {
         printEmpty();
         System.out.println(OPERATE_RESULT);
     }
 
-    public void printResult(RacingResult racingResults, int carCount) {
-        for (int racingIdx = 0; racingIdx < racingResults.size(); racingIdx++) {
-            printDistance(racingResults.get(racingIdx));
+    public void printResult(RacingResult racingResult, int carCount) {
+        for (int racingIdx = 0; racingIdx < racingResult.size(); racingIdx++) {
+            printCarName(racingResult.get(racingIdx));
+            printDistance(racingResult.get(racingIdx));
             checkEachRound(racingIdx, carCount);
         }
         printEmpty();
+        printWinner(racingResult.getWinners());
     }
 
-    private void printDistance(int distance) {
-        for (int length = 0; length < distance; length++) {
+    private void printCarName(Car car) {
+        System.out.print(car.getName() + " : ");
+    }
+
+    private void printDistance(Car car) {
+        for (int length = 0; length < car.getDistance(); length++) {
             System.out.print(DISTANCE);
         }
         printEmpty();
@@ -40,5 +49,13 @@ public class ResultView {
 
     private void printEmpty() {
         System.out.print(ENTER);
+    }
+
+    private void printWinner(List<String> winners) {
+        int lastIdx = winners.size() - 1;
+        for (int winnerIdx = 0; winnerIdx < lastIdx; winnerIdx++) {
+            System.out.print(winners.get(winnerIdx) + ",");
+        }
+        System.out.println(winners.get(lastIdx) + "가 최종 우승했습니다.");
     }
 }

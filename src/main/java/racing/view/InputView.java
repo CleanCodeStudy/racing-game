@@ -1,10 +1,13 @@
 package racing.view;
 
+import racing.util.SplitUtil;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private final String FIRST_QUESTION = "자동차 대수는 몇 대 인가요?";
-    private final String SECOND_QUESTION = "시도할 횟수는 몇 회 인가요?";
+    private static final String FIRST_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String SECOND_QUESTION = "시도할 횟수는 몇 회 인가요?";
 
     private final Scanner sc;
 
@@ -12,13 +15,21 @@ public class InputView {
         this.sc = sc;
     }
 
-    public int inputCarCount() {
+    public List<String> inputCarNames() {
         System.out.println(FIRST_QUESTION);
-        return new InputCount(sc.nextInt()).getCount();
+        return SplitUtil.split(sc.nextLine());
     }
 
     public int inputTryCount() {
         System.out.println(SECOND_QUESTION);
-        return new InputCount(sc.nextInt()).getCount();
+        int tryCount = sc.nextInt();
+        checkPositiveNumber(tryCount);
+        return tryCount;
+    }
+
+    private void checkPositiveNumber(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("최소 한번 이상의 게임을 진행해야 합니다.");
+        }
     }
 }
