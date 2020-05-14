@@ -3,15 +3,18 @@ package racing;
 import racing.domain.GameResult;
 import racing.domain.RacingGame;
 import racing.domain.common.RandomNumberGenerator;
-import racing.dto.InputValueDto;
+import racing.dto.GameInformation;
 import racing.view.InputView;
 import racing.view.OutputView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        InputValueDto inputValueDto = InputView.getInputValueWithName();
+        String[] namesOfCars = InputView.inputNameOfCars();
+        int numberOfAttepts = InputView.inputNumberOfAttempts();
 
-        RacingGame racingGame = new RacingGame(inputValueDto);
+        GameInformation gameInformation = new GameInformation(namesOfCars, numberOfAttepts);
+
+        RacingGame racingGame = new RacingGame(gameInformation);
 
         GameResult gameResult = racingGame.startGame(new RandomNumberGenerator());
 

@@ -1,10 +1,10 @@
 package racing.view;
 
+import racing.domain.CarResult;
 import racing.domain.GameResult;
 import racing.domain.PhaseResult;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -27,9 +27,8 @@ public class OutputView {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
 
-    private static void printRacingResult(PhaseResult phaseResultResult) {
-        String result = phaseResultResult.getRaceResults()
-                .entrySet().stream()
+    private static void printRacingResult(PhaseResult phaseResult) {
+        String result = phaseResult.getRaceResults().stream()
                 .map(OutputView::mapping)
                 .collect(Collectors.joining("\n"));
 
@@ -37,8 +36,8 @@ public class OutputView {
         System.out.println();
     }
 
-    private static String mapping(Map.Entry<String, Integer> entry) {
-        return entry.getKey() + " : " + visualize(entry.getValue());
+    private static String mapping(CarResult carResult) {
+        return carResult.getName() + " : " + visualize(carResult.getDistance());
     }
 
     public static String visualize(int target) {

@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -16,12 +15,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class GameResultTest {
 
     private static PhaseResult makePhaseResult(int first, int second) {
-        Map<String, Integer> raceResults = new LinkedHashMap<>();
+        List<CarResult> carResults = new ArrayList<>();
 
-        raceResults.put("pobi", first);
-        raceResults.put("crong", second);
+        carResults.add(new CarResult("pobi", first));
+        carResults.add(new CarResult("crong", second));
 
-        return new PhaseResult(raceResults);
+        return new PhaseResult(carResults);
     }
 
     @DisplayName("각 시도에 맞는 phaseResult를 반환한다.")

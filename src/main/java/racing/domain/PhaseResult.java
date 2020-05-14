@@ -1,30 +1,28 @@
 package racing.domain;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-
 public class PhaseResult {
-    private final Map<String, Integer> raceResults;
+    private final List<CarResult> raceResults;
 
-    public PhaseResult(Map<String, Integer> raceResults) {
+    public PhaseResult(List<CarResult> raceResults) {
         this.raceResults = raceResults;
     }
 
-    public Map<String, Integer> getRaceResults() {
+    public List<CarResult> getRaceResults() {
         return raceResults;
     }
 
     public List<String> getCurrentLeads() {
-        int max = raceResults.entrySet().stream()
-                .mapToInt(Map.Entry::getValue)
-                .max()
-                .orElseThrow(IllegalStateException::new);
+        CarResult currentLead = raceResults.stream()
+                .sorted()
+                .findFirst()
+                .orElseThrow(IllegalAccessError::new);
 
-        return raceResults.entrySet().stream()
-                .filter(x -> x.getValue() == max)
-                .map(Map.Entry::getKey)
+        return raceResults.stream()
+                .filter(carResult -> carResult.getDistance() == currentLead.getDistance())
+                .map(CarResult::getName)
                 .collect(Collectors.toList());
     }
 }

@@ -1,24 +1,24 @@
 package racing.domain;
 
 import racing.domain.common.NumberGenerator;
-import racing.dto.InputValueDto;
+import racing.dto.GameInformation;
 
 public class RacingGame {
-    private final RacingPhase racingPhase;
-    private final InputValueDto inputValueDto;
+    private final ParticipateCars participateCars;
+    private final GameInformation gameInformation;
 
-    public RacingGame(InputValueDto inputValueDto) {
-        this.inputValueDto = inputValueDto;
-        this.racingPhase = new RacingPhase(inputValueDto.getNamesOfCars());
+    public RacingGame(GameInformation gameInformation) {
+        this.gameInformation = gameInformation;
+        this.participateCars = new ParticipateCars(gameInformation.getNamesOfCars());
     }
 
     public GameResult startGame(NumberGenerator numberGenerator) {
-        int numberOfAttempts = inputValueDto.getNumberOfAttempts();
+        int numberOfAttempts = gameInformation.getNumberOfAttempts();
         GameResult gameResult = new GameResult(numberOfAttempts);
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            PhaseResult eachPhaseResult = racingPhase.startRace(numberGenerator);
-            gameResult.addEachRacingResult(eachPhaseResult);
+            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(numberGenerator));
+            gameResult.addEachRacingResult(phaseResult);
         }
 
         return gameResult;

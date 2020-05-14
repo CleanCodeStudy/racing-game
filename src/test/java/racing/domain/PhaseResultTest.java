@@ -3,6 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +19,17 @@ class PhaseResultTest {
         moveResult.put("pobi", 1);
         moveResult.put("crong", 0);
 
-        PhaseResult phaseResult = new PhaseResult(moveResult);
+        List<CarResult> carResults = Arrays.asList(new CarResult("pobi", 1)
+                , new CarResult("crong", 0)
+                , new CarResult("horox", 1));
+
+        PhaseResult phaseResult = new PhaseResult(carResults);
 
         List<String> leads = phaseResult.getCurrentLeads();
 
         assertAll(
-                () -> assertThat(leads.size()).isEqualTo(1),
-                () -> assertThat(leads.get(0)).isEqualTo("pobi")
+                () -> assertThat(leads.size()).isEqualTo(2),
+                () -> assertThat(leads).containsExactly("pobi", "horox")
         );
     }
 }
