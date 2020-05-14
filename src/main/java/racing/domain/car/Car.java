@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.car;
 
 public class Car {
     private static final int MOVE_CONIDTION = 4;

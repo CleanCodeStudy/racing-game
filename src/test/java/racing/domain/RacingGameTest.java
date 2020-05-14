@@ -3,7 +3,6 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.common.FixedNumberGenerator;
-import racing.dto.GameInformation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

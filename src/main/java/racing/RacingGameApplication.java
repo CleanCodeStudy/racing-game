@@ -1,9 +1,9 @@
 package racing;
 
+import racing.domain.GameInformation;
 import racing.domain.GameResult;
 import racing.domain.RacingGame;
 import racing.domain.common.RandomNumberGenerator;
-import racing.dto.GameInformation;
 import racing.view.InputView;
 import racing.view.OutputView;
 

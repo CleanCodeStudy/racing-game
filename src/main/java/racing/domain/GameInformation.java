@@ -1,4 +1,4 @@
-package racing.dto;
+package racing.domain;
 
 public class GameInformation {
     private String[] namesOfCars;

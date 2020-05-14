@@ -1,7 +1,7 @@
 package racing.domain;
 
+import racing.domain.car.ParticipateCars;
 import racing.domain.common.NumberGenerator;
-import racing.dto.GameInformation;
 
 public class RacingGame {
     private final ParticipateCars participateCars;
