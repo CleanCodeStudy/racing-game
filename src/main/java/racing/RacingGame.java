@@ -1,9 +1,9 @@
 package racing;
 
 import racing.domain.GameInfo;
+import racing.domain.RacingCar;
 import racing.domain.RacingCars;
 import racing.util.NumberGenerator;
-
 
 public class RacingGame {
 
@@ -11,7 +11,7 @@ public class RacingGame {
 
     private RacingCars racingCars;
 
-    RacingGame(GameInfo gameInfo, RacingCars racingCars) {
+    public RacingGame(GameInfo gameInfo, RacingCars racingCars) {
         this.gameInfo = gameInfo;
         this.racingCars = racingCars;
     }
@@ -23,7 +23,12 @@ public class RacingGame {
     }
 
     private void playNextRound(NumberGenerator numberGenerator) {
-        gameInfo.isRemainRound();
-        racingCars.attendRound(numberGenerator);
+        attendRacingCars(numberGenerator);
+    }
+
+    private void attendRacingCars(NumberGenerator numberGenerator) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
+            racingCar.attendRound(numberGenerator);
+        }
     }
 }
