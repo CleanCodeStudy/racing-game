@@ -2,34 +2,46 @@ package racing.domain;
 
 import racing.util.NumberGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+public class RacingCar implements Comparable<RacingCar> {
 
-public class RacingCar {
+    private String carName;
 
-    private List<Integer> roundPosition = new ArrayList<>();
+    private RoundsPosition roundsPosition = new RoundsPosition();
 
-    public RacingCar() {
-        roundPosition.add(1);
+    public RacingCar(String carName) {
+        this.carName = carName;
     }
 
     public void attendRound(NumberGenerator numberGenerator) {
-        if (Movement.nextMovement(numberGenerator).canMove()) {
+        if (canMove(numberGenerator)) {
             move();
             return;
         }
-        roundPosition.add(getLastPosition());
+        roundsPosition.addPosition(getLastPosition());
+    }
+
+    private boolean canMove(NumberGenerator numberGenerator) {
+        return numberGenerator.generateNumber() >= GameInfo.MOVE_CONDITION;
     }
 
     private void move() {
-        roundPosition.add(getLastPosition()+1);
+        roundsPosition.addPosition(getLastPosition() + 1);
     }
 
-    private int getLastPosition() {
-        return roundPosition.get(roundPosition.size()-1);
+    public int getLastPosition() {
+        return roundsPosition.peek();
     }
 
     public int getRoundPosition(int round) {
-        return roundPosition.get(round);
+        return roundsPosition.getRoundPosition(round);
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    @Override
+    public int compareTo(RacingCar racingCar) {
+        return racingCar.getLastPosition() - this.getLastPosition();
     }
 }
