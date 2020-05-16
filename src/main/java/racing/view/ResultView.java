@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.domain.Car;
+import racing.domain.CarData;
 import racing.domain.RacingResult;
 
 import java.util.List;
@@ -26,12 +26,12 @@ public class ResultView {
         printWinner(racingResult.getWinners());
     }
 
-    private void printCarName(Car car) {
-        System.out.print(car.getName() + " : ");
+    private void printCarName(CarData carData) {
+        System.out.print(carData.getName() + " : ");
     }
 
-    private void printDistance(Car car) {
-        for (int length = 0; length < car.getDistance(); length++) {
+    private void printDistance(CarData carData) {
+        for (int length = 0; length < carData.getDistance(); length++) {
             System.out.print(DISTANCE);
         }
         printEmpty();

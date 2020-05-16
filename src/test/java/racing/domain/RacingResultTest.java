@@ -14,10 +14,10 @@ class RacingResultTest {
     @DisplayName("우승자가 한명일 때 우승자의 크기와 이름을 포함하고 있는지 확인한다.")
     @Test
     void getWinner1() {
-        List<Car> cars = Arrays.asList(new Car("bang", 5),
-                new Car("ki", 10),
-                new Car("hyun", 15));
-        RacingResult racingResult = new RacingResult(cars);
+        List<CarData> carData = Arrays.asList(new CarData("bang", 5),
+                new CarData("ki", 10),
+                new CarData("hyun", 15));
+        RacingResult racingResult = new RacingResult(carData);
         List<String> winners = racingResult.getWinners();
 
         assertEquals(1, winners.size());
@@ -27,10 +27,10 @@ class RacingResultTest {
     @DisplayName("우승자가 여러명일 때 우승자의 크기와 이름을 포함하고 있는지 확인한다.")
     @Test
     void getWinner2() {
-        List<Car> cars = Arrays.asList(new Car("bang", 10),
-                new Car("ki", 10),
-                new Car("hyun", 10));
-        RacingResult racingResult = new RacingResult(cars);
+        List<CarData> carData = Arrays.asList(new CarData("bang", 10),
+                new CarData("ki", 10),
+                new CarData("hyun", 10));
+        RacingResult racingResult = new RacingResult(carData);
         List<String> winners = racingResult.getWinners();
 
         assertEquals(3, winners.size());

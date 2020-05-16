@@ -14,7 +14,7 @@ public class Cars {
     }
 
     public RacingResult operate(int tryCount, NumberGenerator numberGenerator) {
-        List<Car> racingResult = new ArrayList<>();
+        List<CarData> racingResult = new ArrayList<>();
         for (int curTryCount = 0; curTryCount < tryCount; curTryCount++) {
             moveCars(racingResult, numberGenerator);
         }
@@ -30,11 +30,11 @@ public class Cars {
         return cars.size();
     }
 
-    private void moveCars(List<Car> racingResult, NumberGenerator numberGenerator) {
+    private void moveCars(List<CarData> racingResult, NumberGenerator numberGenerator) {
         for (int carIdx = 0; carIdx < size(); carIdx++) {
             Car car = get(carIdx);
             car.move(RandomDistanceUtil.getRandomDistance(numberGenerator));
-            racingResult.add(new Car(car.getName(), car.getDistance()));
+            racingResult.add(new CarData(car.getName(), car.getDistance()));
         }
     }
 }

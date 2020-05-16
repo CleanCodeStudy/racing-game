@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingResult {
-    private final List<Car> racingResult;
+    private final List<CarData> racingResult;
 
-    public RacingResult(List<Car> racingResult) {
+    public RacingResult(List<CarData> racingResult) {
         this.racingResult = racingResult;
     }
 
@@ -14,7 +14,7 @@ public class RacingResult {
         return racingResult.size();
     }
 
-    public Car get(int idx) {
+    public CarData get(int idx) {
         return racingResult.get(idx);
     }
 
@@ -22,16 +22,16 @@ public class RacingResult {
         int maxDistance = getMaxDistance();
         return racingResult
                 .stream()
-                .filter(car -> (car.getDistance() == maxDistance))
-                .map(car -> car.getName())
+                .filter(carData -> (carData.getDistance() == maxDistance))
+                .map(carData -> carData.getName())
                 .distinct()
                 .collect(Collectors.toList());
     }
 
     private int getMaxDistance() {
-        Car maxByDistance = racingResult
+        CarData maxByDistance = racingResult
                 .stream()
-                .max(Comparator.comparing(Car::getDistance))
+                .max(Comparator.comparing(CarData::getDistance))
                 .orElseThrow(NoSuchElementException::new);
 
         return maxByDistance.getDistance();
