@@ -1,10 +1,10 @@
 package racing.domain;
 
-public final class CarData {
+public final class ResultCarInfo {
     private final String name;
     private final int distance;
 
-    public CarData(String name, int distance) {
+    public ResultCarInfo(String name, int distance) {
         this.name = name;
         this.distance = distance;
     }

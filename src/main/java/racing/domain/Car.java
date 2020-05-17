@@ -17,7 +17,7 @@ public class Car {
         return distance;
     }
 
-    public void move(int distance) {
-        this.distance += distance;
+    public void move(int moveDistance) {
+        this.distance += moveDistance;
     }
 }

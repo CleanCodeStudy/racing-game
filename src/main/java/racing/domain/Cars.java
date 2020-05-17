@@ -13,28 +13,19 @@ public class Cars {
         this.cars = cars;
     }
 
-    public RacingResult operate(int tryCount, NumberGenerator numberGenerator) {
-        List<CarData> racingResult = new ArrayList<>();
-        for (int curTryCount = 0; curTryCount < tryCount; curTryCount++) {
-            moveCars(racingResult, numberGenerator);
+    public void operate(int tryCount, NumberGenerator numberGenerator, EachRoundResult eachRoundResult) {
+        for (int roundIdx = 1; roundIdx <= tryCount; roundIdx++) {
+            List<ResultCarInfo> roundResult = new ArrayList<>();
+            moveCars(roundResult, numberGenerator);
+            eachRoundResult.addRoundResult(roundIdx, roundResult);
         }
-
-        return new RacingResult(racingResult);
     }
 
-    private Car get(int idx) {
-        return cars.get(idx);
-    }
-
-    private int size() {
-        return cars.size();
-    }
-
-    private void moveCars(List<CarData> racingResult, NumberGenerator numberGenerator) {
-        for (int carIdx = 0; carIdx < size(); carIdx++) {
-            Car car = get(carIdx);
+    private void moveCars(List<ResultCarInfo> roundResult, NumberGenerator numberGenerator) {
+        for (int carIdx = 0; carIdx < cars.size(); carIdx++) {
+            Car car = cars.get(carIdx);
             car.move(RandomDistanceUtil.getRandomDistance(numberGenerator));
-            racingResult.add(new CarData(car.getName(), car.getDistance()));
+            roundResult.add(new ResultCarInfo(car.getName(), car.getDistance()));
         }
     }
 }
